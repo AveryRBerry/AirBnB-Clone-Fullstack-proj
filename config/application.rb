@@ -37,10 +37,10 @@ module AirBnBprj
 
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore,
-    key: '_appname_session',
+    key: '_air_bnb_session',#??? _auth_me_session
     same_site: :lax, 
     secure: Rails.env.production?
 
-    config.api_only = true
+    config.api_only = true #this isint in the prj guid
   end
 end
