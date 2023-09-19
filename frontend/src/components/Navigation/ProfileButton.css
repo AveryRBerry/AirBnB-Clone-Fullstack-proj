@@ -1,0 +1,81 @@
+#profileButton {
+
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-right: 78px;
+    display: inline-block;
+    padding: 5px 5px;
+    /* Adjust padding as needed for the button size */
+    background-color: #ffffff;
+    /* Button background color */
+    color: #8d8787;
+    /* Text color */
+    border: .5px solid #c4c4c4; /* Black border */
+    cursor: pointer;
+    border-radius: 20px;
+    /* Half of the button width to create half circles */
+    font-size: 30px;
+    /* Adjust the size as needed */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+#profileButton i:first-child {
+    margin-right: 5px;
+    margin-left: 5px;
+    /* Add margin to the first <i> element */
+}
+
+#profileButton i:last-child {
+    margin-left: 10px;
+    /* Add margin to the second <i> element */
+}
+
+
+
+
+
+
+
+.profile-dropdown {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+/* Example of aligning elements */
+.profile-dropdown li button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    /* Expand to fill the available space */
+    text-align: left;
+    /* Align content to the left */
+}
+
+/* Add spacing between list items */
+.profile-dropdown li:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.profile-dropdown li:not(:last-child) {
+    margin-bottom: 0;
+    /* Remove margin between items */
+}
+
+.fa-bars {
+    font-size: 15px;
+}

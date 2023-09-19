@@ -8,14 +8,14 @@ function App() {
   return (
     <>
       <Navigation />
-        <Switch>
+        {/* <Switch> */}
           {/* <Route path="/login" >
             <LoginFormPage />
           </Route> */}
-          <Route path="/signup">
+          {/* <Route path="/signup">
             <SignupFormPage />
-          </Route>
-        </Switch>
+          </Route> */}
+        {/* </Switch> */}
     </>
   );
 }
