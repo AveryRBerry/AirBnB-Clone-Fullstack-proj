@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: airBnBprj_production
-  username: airBnBprj
-  password: <%= ENV["AIRBNBPRJ_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
