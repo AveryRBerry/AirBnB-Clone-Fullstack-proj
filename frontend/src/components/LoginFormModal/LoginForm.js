@@ -29,30 +29,32 @@ function LoginForm() {
 
   return (
     <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+
+      <form id='loginForm' onSubmit={handleSubmit}>
+        <h1>Log in</h1>
+        <h1>Welcome to Airdnd</h1>
         <ul>
           {errors.map(error => <li key={error}>{error}</li>)}
         </ul>
         <label>
-          Email
           <input
             type="text"
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
             required
+            placeholder="Enter your email"
           />
         </label>
         <label>
-          Password
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            placeholder="Enter your password"
           />
         </label>
-        <button type="submit">Log In</button>
+        <button type="submit">Continue</button>
       </form>
     </>
   );

@@ -1,0 +1,30 @@
+#modal {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Slightly transparent black overlay */
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    /* Horizontally center the content */
+    align-items: center;
+    /* Vertically center the content */
+}
+
+
+/* #modal-background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+} */
+
+#modal-content {
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+}

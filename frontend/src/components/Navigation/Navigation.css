@@ -1,4 +1,16 @@
 #homeTopDisplayBar {
     display: flex;
     justify-content: space-between;
+    border: .5px solid #c4c4c4;
+    height: 80px;
+}
+
+
+/* might have to fix img by increasing text size */
+#AirDnDHomeButton {
+    width: 90px;
+    height: auto;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: 78px;
 }

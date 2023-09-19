@@ -42,5 +42,6 @@ module AirBnBprj
     secure: Rails.env.production?
 
     config.api_only = true #this isint in the prj guid
+    config.railties_order = [:all, :main_app]
   end
 end

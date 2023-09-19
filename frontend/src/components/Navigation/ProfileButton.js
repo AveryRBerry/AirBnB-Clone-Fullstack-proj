@@ -39,12 +39,13 @@ function ProfileButton({ user }) {
   if (user){
     return (
       <>
-        <button onClick={openMenu}>
-          <i className="fa-solid fa-user-circle" />
-        </button>
+          <button id='profileButton' onClick={openMenu}>
+            <i className="fa-solid fa-bars" />
+            <i className="fa-solid fa-user-circle" />
+          </button>
         {showMenu && (
           <ul className="profile-dropdown">
-            <li>{user.email}</li>
+            {/* <li>{user.email}</li> */}
             <li>
               <button onClick={logout}>Log Out</button>
             </li>
