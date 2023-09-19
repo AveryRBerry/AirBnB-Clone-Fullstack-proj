@@ -66,11 +66,17 @@ function ProfileButton({ user }) {
           )}
           {LoginshowModal && (
             <Modal id='logInModal' onClose={() => setLoginShowModal(false)}>
+              <button className='xFormButton' onClick={() => setLoginShowModal(false)} >
+                <i className="fa-solid fa-times"></i>
+              </button>
               <LoginForm />
             </Modal> 
           )}
           {SignUpshowModal && (
             <Modal id='signUpModal' onClose={() => setSignUpShowModal(false)}>
+              <button className='xFormButton' onClick={() => setSignUpShowModal(false)} >
+                <i className="fa-solid fa-times"></i>
+              </button>
               <SignUpForm />
             </Modal> 
           )}

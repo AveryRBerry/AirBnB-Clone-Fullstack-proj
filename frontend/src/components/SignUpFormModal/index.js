@@ -1,3 +1,5 @@
+import './SignUpFormModal.css'
+
 function SignUpFormModal({openSignUpModal}) {
 
   return (

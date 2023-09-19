@@ -28,4 +28,17 @@
     background-color: white;
     border-radius: 5px;
     padding: 20px;
+    width: 525px;    
+    height: 625px;
+    border-radius: 10px;
+}
+
+.formButton {
+    background-color: rgb(255, 0, 89);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 16px 20px;
+    cursor: pointer;
+    margin: 40px 0px;
 }

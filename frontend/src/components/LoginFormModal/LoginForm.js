@@ -32,7 +32,7 @@ function LoginForm() {
 
       <form id='loginForm' onSubmit={handleSubmit}>
         <h1>Log in</h1>
-        <h1>Welcome to Airdnd</h1>
+        <h2>Welcome to Airdnd</h2>
         <ul>
           {errors.map(error => <li key={error}>{error}</li>)}
         </ul>
@@ -54,7 +54,7 @@ function LoginForm() {
             placeholder="Enter your password"
           />
         </label>
-        <button type="submit">Continue</button>
+        <button className='formButton' type="submit">Continue</button>
       </form>
     </>
   );
