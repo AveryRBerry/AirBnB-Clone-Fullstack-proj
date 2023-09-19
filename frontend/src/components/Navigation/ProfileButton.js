@@ -1,34 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import LoginFormModal from '../LoginFormModal';
-import { NavLink } from 'react-router-dom';
 import SignUpFormModal from "../SignUpFormModal";
+import SignUpForm from '../SignUpFormModal/SignUpForm'
 import './ProfileButton.css'
+
+import { Modal } from '../../context/Modal';
+import LoginForm from "../LoginFormModal/LoginForm"
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const [LoginshowModal, setLoginShowModal] = useState(false);
+  const [SignUpshowModal, setSignUpShowModal] = useState(false);
   
   const openMenu = () => {
     setShowMenu(!showMenu);
   };
 
+  const openLoginModal = () => {
+    setShowMenu(!showMenu)
+    setLoginShowModal(!LoginshowModal)
+  }
 
-// ********/
-//   this needs to be fixed need to find a way to remove the mene without removing the form
-  // useEffect(() => {
-  //   if (!showMenu) return;
-
-  //   const closeMenu = (e) => {
-  //     setShowMenu(false);
-  //   };
-
-    
-  //   document.addEventListener('click', closeMenu);
-  
-  //   return () => document.removeEventListener("click", closeMenu);
-  // }, [showMenu]);
+  const openSignUpModal = () => {
+    setShowMenu(!showMenu)
+    setSignUpShowModal(!SignUpshowModal)
+  }
 
   const logout = (e) => {
     e.preventDefault();
@@ -45,7 +44,6 @@ function ProfileButton({ user }) {
           </button>
         {showMenu && (
           <ul className="profile-dropdown">
-            {/* <li>{user.email}</li> */}
             <li>
               <button onClick={logout}>Log Out</button>
             </li>
@@ -62,10 +60,19 @@ function ProfileButton({ user }) {
           </button>
           {showMenu && (
             <ul className="profile-dropdown">
-                <li><LoginFormModal /></li>
-                {/* <NavLink to="/signup">Sign Up</NavLink> */}
-                <li><SignUpFormModal /></li>
+                <li><LoginFormModal openLoginModal={openLoginModal} /></li>
+                <li><SignUpFormModal openSignUpModal={openSignUpModal} /></li>
             </ul>
+          )}
+          {LoginshowModal && (
+            <Modal id='logInModal' onClose={() => setLoginShowModal(false)}>
+              <LoginForm />
+            </Modal> 
+          )}
+          {SignUpshowModal && (
+            <Modal id='signUpModal' onClose={() => setSignUpShowModal(false)}>
+              <SignUpForm />
+            </Modal> 
           )}
         </>
       )

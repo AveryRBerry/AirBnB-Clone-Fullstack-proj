@@ -1,4 +1,5 @@
 import React from 'react';
+// import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
@@ -9,6 +10,10 @@ import homeImage from '../../Assets/airdnd-try-again.png'
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
 
+  // const [showMenu, setShowMenu] = useState(false);
+  // const openMenu = () => {
+  //   setShowMenu(!showMenu);
+  // };
 
     // sessionLinks = (
     //   <>
