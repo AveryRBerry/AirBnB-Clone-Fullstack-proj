@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
-// import "./LoginForm.css";
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -16,46 +15,63 @@ function LoginForm() {
       .catch(async (res) => {
         let data;
         try {
-          // .clone() essentially allows you to read the response body twice
           data = await res.clone().json();
         } catch {
-          data = await res.text(); // Will hit this case if, e.g., server is down
+          data = await res.text();
         }
         if (data?.errors) setErrors(data.errors);
         else if (data) setErrors([data]);
         else setErrors([res.statusText]);
       });
+
+
+
   };
 
   return (
     <>
-
-      <form id='loginForm' onSubmit={handleSubmit}>
+      <div id='headerOne' >
         <h1>Log in</h1>
+      </div>
+      <form id='loginForm' onSubmit={handleSubmit}>
         <h2>Welcome to Airdnd</h2>
-        <ul>
-          {errors.map(error => <li key={error}>{error}</li>)}
-        </ul>
         <label>
           <input
+            className='topInputForRoundedCorners'
             type="text"
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
             required
-            placeholder="Enter your email"
+            placeholder="Email"
           />
         </label>
         <label>
           <input
+            className='bottomInputForRoundedCorners'
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            placeholder="Enter your password"
+            placeholder="Password"
           />
         </label>
+        <ul className='listOfErrors'>
+          {errors.map(error => <li key={error}> <i class="fas fa-exclamation-circle" /> {error}</li>)}
+        </ul>
         <button className='formButton' type="submit">Continue</button>
+        <div id="or">or</div>
+        <button
+          id='demoUserButton' 
+          className='formButton'
+          onClick={() => {
+            setCredential('demo@user.io');
+            setPassword('!StrongPassword232305');
+          }}
+          >
+          Demo User Log-In
+        </button>
       </form>
+
     </>
   );
 }

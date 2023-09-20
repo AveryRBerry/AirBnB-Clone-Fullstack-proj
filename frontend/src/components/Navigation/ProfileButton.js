@@ -32,6 +32,7 @@ function ProfileButton({ user }) {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    openMenu();
   };
 
 
@@ -45,7 +46,9 @@ function ProfileButton({ user }) {
         {showMenu && (
           <ul className="profile-dropdown">
             <li>
-              <button onClick={logout}>Log Out</button>
+              <button onClick={logout} >
+                Log Out
+              </button>
             </li>
           </ul>
         )}

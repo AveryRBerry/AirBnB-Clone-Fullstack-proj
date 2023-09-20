@@ -39,14 +39,14 @@ function SignUpForm() {
 
   return (
     <>
-      <form id='SignUpForm' onSubmit={handleSubmit}>
+      <div id='headerOne' >
         <h1>Sign Up</h1>
+      </div>
+      <form id='SignUpForm' onSubmit={handleSubmit}>
         <h2>Welcome to Airdnd</h2>
-        <ul>
-          {errors.map((error) => <li key={error}>{error}</li>)}
-        </ul>
         <label>
           <input
+            className='topInputForRoundedCorners'
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -69,29 +69,37 @@ function SignUpForm() {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
-            placeholder="Confirm Password"
+            placeholder="Confirm password"
           />
         </label>
         <label>
           <input
+            
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             required
-            placeholder="First Name"
+            placeholder="First name"
           />
         </label>
         <label>
           <input
+            className='bottomInputForRoundedCorners'
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             required
-            placeholder="Last Name"
+            placeholder="Last name"
           />
         </label>
+        <ul className='listOfErrors'>
+          
+          {errors.map((error) => <li key={error}><i class="fas fa-exclamation-circle" /> {error}</li>)}
+          
+        </ul>
         <button className='formButton' type="submit">Continue</button>
       </form>
+      <div id="or">or</div>
     </>
   );
 }
