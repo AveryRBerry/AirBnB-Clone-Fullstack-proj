@@ -5,11 +5,14 @@ import LoginFormModal from '../LoginFormModal';
 import SignUpFormModal from "../SignUpFormModal";
 import SignUpForm from '../SignUpFormModal/SignUpForm'
 import './ProfileButton.css'
-
 import { Modal } from '../../context/Modal';
 import LoginForm from "../LoginFormModal/LoginForm"
+import { useRef, useEffect } from 'react';
+
 
 function ProfileButton({ user }) {
+
+
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const [LoginshowModal, setLoginShowModal] = useState(false);
@@ -33,7 +36,25 @@ function ProfileButton({ user }) {
     e.preventDefault();
     dispatch(sessionActions.logout());
     openMenu();
+    setLoginShowModal(false) ;
+    setSignUpShowModal(false);
   };
+
+
+  const dropDownMenuRef = useRef(null);
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (showMenu && dropDownMenuRef.current && !dropDownMenuRef.current.contains(event.target)) {
+        openMenu()
+      }
+    }
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [showMenu]);
 
 
   if (user){
@@ -62,7 +83,7 @@ function ProfileButton({ user }) {
             <i className="fa-solid fa-user-circle" />
           </button>
           {showMenu && (
-            <ul className="profile-dropdown">
+            <ul ref={dropDownMenuRef} className="profile-dropdown">
                 <li><LoginFormModal openLoginModal={openLoginModal} /></li>
                 <li><SignUpFormModal openSignUpModal={openSignUpModal} /></li>
             </ul>
