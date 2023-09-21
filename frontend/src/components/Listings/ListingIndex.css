@@ -1,0 +1,38 @@
+#listingsIndexPage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    /* height: 80vh; */
+    padding-top: 112px;
+    padding-left: 4.1%;
+    padding-right: 4.1%;
+    
+}
+
+.listingItem {
+    display: block;
+    min-width: 250px;
+    min-height: 370px;
+    border: 1px solid black;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    flex: 1;
+    
+}
+
+.listingItemImg {
+    background-color: rgb(133, 133, 133);
+    width: 100%;
+    height: 67.5%;
+    /* border: 5px solid rgb(0, 0, 0); */
+    border-radius: 15px;
+}
+
+.listingItemImg::before {
+    content: "";
+    padding-top: 133.33%;
+    /* Maintain a 3:4 aspect ratio (4/3 = 133.33%) */
+    display: block;
+}

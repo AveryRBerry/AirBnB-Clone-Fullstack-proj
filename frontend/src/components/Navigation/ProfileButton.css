@@ -32,21 +32,15 @@
 #profileButton i:first-child {
     margin-right: 5px;
     margin-left: 5px;
-    /* Add margin to the first <i> element */
 }
 
 #profileButton i:last-child {
     margin-left: 10px;
-    /* Add margin to the second <i> element */
 }
 
-
-
-
-
-
-
 .profile-dropdown {
+    position: relative;
+    z-index: 999;
     background-color: white;
     border: 1px solid #f1f1f1;
     border-radius: 10px;

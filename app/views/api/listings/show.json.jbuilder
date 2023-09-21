@@ -1,6 +1,6 @@
 json.listing do
   json.extract! @listing, 
-    :host_id,
+    :id
     :host_id,
     :address, 
     :title,

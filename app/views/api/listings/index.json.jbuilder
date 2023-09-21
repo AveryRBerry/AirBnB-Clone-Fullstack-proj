@@ -1,8 +1,8 @@
-json.listing do
-    @lsitings.each do  |listing| 
+# json.listings do
+    @listings.each do  |listing| 
         json.set! listing.id do
             json.extract! listing, 
-                :host_id,
+                :id,
                 :host_id,
                 :address, 
                 :title,
@@ -13,10 +13,10 @@ json.listing do
                 :price,
                 :has_ac,
                 :has_wifi,
-                :Pets_allowed,
+                :has_pets_allowed,
                 :has_washer_dryer,
                 :latitude,
                 :longitude
         end
     end
-end
+# end
