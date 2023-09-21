@@ -63,9 +63,9 @@ function LoginForm() {
         <button
           id='demoUserButton' 
           className='formButton'
-          onClick={() => {
-            setCredential('demo@user.io');
-            setPassword('!StrongPassword232305');
+          onClick={(e) => {
+            e.preventDefault();
+            dispatch(sessionActions.login({ credential: 'demo@user.io', password: '!StrongPassword232305' }))
           }}
           >
           Demo User Log-In

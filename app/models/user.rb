@@ -9,6 +9,8 @@ class User < ApplicationRecord
   validates :password, length: { in: 6..255 }, allow_nil: true
   validates :last_name, presence: true
   validates :first_name, presence: true
+
+  has_many :listings, foreign_key: :host_id
   
   before_validation :ensure_session_token
 

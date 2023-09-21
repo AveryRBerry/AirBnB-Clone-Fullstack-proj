@@ -65,7 +65,7 @@ function ProfileButton({ user }) {
             <i className="fa-solid fa-user-circle" />
           </button>
         {showMenu && (
-          <ul className="profile-dropdown">
+          <ul ref={dropDownMenuRef} className="profile-dropdown">
             <li>
               <button onClick={logout} >
                 Log Out

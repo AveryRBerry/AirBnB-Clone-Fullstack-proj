@@ -98,8 +98,19 @@ function SignUpForm() {
           
         </ul>
         <button className='formButton' type="submit">Continue</button>
-      </form>
       <div id="or">or</div>
+        <button
+          id='demoUserButton' 
+          className='formButton'
+          onClick={(e) => {
+            e.preventDefault();
+            dispatch(sessionActions.login({ credential: 'demo@user.io', password: '!StrongPassword232305' }))
+          }}
+          >
+          Demo User Log-In
+        </button>
+      </form>
+
     </>
   );
 }
