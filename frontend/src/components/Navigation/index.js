@@ -23,16 +23,19 @@ function Navigation() {
     // );
 
   return (
-    <ul id='homeTopDisplayBar'>
-      <li>
-        <NavLink exact to="/">
-          <img id='AirDnDHomeButton' src={homeImage} alt="Home" />
-        </NavLink>
-      </li>
-      <li>
-        <ProfileButton user={sessionUser} />
-      </li>
-    </ul>
+    <div id='stickyContainer'>
+      <ul id='homeTopDisplayBar'>
+        <li>
+          <NavLink exact to="/">
+            <img id='AirDnDHomeButton' src={homeImage} alt="Home" />
+          </NavLink>
+        </li>
+        <li>
+          <ProfileButton user={sessionUser} />
+        </li>
+      </ul>
+      <ul id='catagories'></ul>
+    </div>
   );
 }
 

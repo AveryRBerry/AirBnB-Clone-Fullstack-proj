@@ -246,7 +246,108 @@ Listing.create!(
   longitude: -111.7602
 )
 
+Listing.create!(
+  host_id: 1,
+  address: "42 Merlin's Way",
+  title: "Wizard's Tower with a Magic Library",
+  description: "Stay in this wizard's tower and explore the vast collection of magical books in the library.",
+  num_beds: 3,
+  num_bedrooms: 2,
+  number_bathrooms: 2,
+  price: 180.0,
+  has_ac: true,
+  has_wifi: true,
+  has_pets_allowed: false,
+  has_washer_dryer: true,
+  latitude: 45.5122,
+  longitude: -122.6587
+)
 
+Listing.create!(
+  host_id: 1,
+  address: "789 Fantasy Street",
+  title: "Hobbit Hole in the Shire",
+  description: "Live like a hobbit in this cozy underground dwelling surrounded by rolling hills.",
+  num_beds: 1,
+  num_bedrooms: 1,
+  number_bathrooms: 1,
+  price: 60.0,
+  has_ac: false,
+  has_wifi: true,
+  has_pets_allowed: true,
+  has_washer_dryer: false,
+  latitude: 51.5074,
+  longitude: -0.1278
+)
+
+Listing.create!(
+  host_id: 1,
+  address: "123 Dragonfly Lane",
+  title: "Dragon Keep with Friendly Fire-breathing Dragon",
+  description: "Experience a unique adventure in this castle guarded by a dragon with a heart of gold.",
+  num_beds: 5,
+  num_bedrooms: 4,
+  number_bathrooms: 3,
+  price: 250.0,
+  has_ac: true,
+  has_wifi: true,
+  has_pets_allowed: true,
+  has_washer_dryer: true,
+  latitude: 37.7749,
+  longitude: -122.4194
+)
+
+
+Listing.create!(
+  host_id: 1,
+  address: "456 Enchanted Avenue",
+  title: "Mystical Cottage in the Enchanted Forest",
+  description: "Escape to this charming cottage nestled deep within the enchanted forest. Keep an eye out for fairies!",
+  num_beds: 2,
+  num_bedrooms: 1,
+  number_bathrooms: 1,
+  price: 90.0,
+  has_ac: false,
+  has_wifi: true,
+  has_pets_allowed: true,
+  has_washer_dryer: false,
+  latitude: 41.8781,
+  longitude: -87.6298
+)
+
+Listing.create!(
+  host_id: 1,
+  address: "789 Wizardry Lane",
+  title: "Magician's Retreat with Floating Carpets",
+  description: "Stay in this magical retreat and enjoy the luxury of floating carpets that take you wherever you desire.",
+  num_beds: 3,
+  num_bedrooms: 2,
+  number_bathrooms: 2,
+  price: 160.0,
+  has_ac: true,
+  has_wifi: true,
+  has_pets_allowed: false,
+  has_washer_dryer: true,
+  latitude: 51.5074,
+  longitude: -0.1278
+)
+
+Listing.create!(
+  host_id: 1,
+  address: "123 Wizard's Alley",
+  title: "Quaint Wizard's Cottage",
+  description: "Experience the whimsy of a wizard's life in this quaint cottage filled with magical artifacts and potions.",
+  num_beds: 2,
+  num_bedrooms: 1,
+  number_bathrooms: 1,
+  price: 120.0,
+  has_ac: true,
+  has_wifi: true,
+  has_pets_allowed: true,
+  has_washer_dryer: false,
+  latitude: 37.7749,
+  longitude: -122.4194
+)
 
 puts "Done!"
 end

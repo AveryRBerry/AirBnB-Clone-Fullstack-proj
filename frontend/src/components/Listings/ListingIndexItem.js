@@ -1,24 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { deleteListing } from '../../store/listings';
-
 
 
 
 const ListingIndexItem = ({listing}) => {
-    const dispatch = useDispatch();
-
-    const handleDelete = e => {
-        dispatch(deleteListing(listing.id))
-    }
 
     return (
-        <div className='listingItem'>
-            <div className='listingItemImg'></div>
-            <Link to={`/listings/${listing.id}`}>{listing.title}</Link>
-            {/* <button onClick={handleDelete}> Delete</button> */}
-        </div>
+        <Link className='listingItem' to={`/listings/${listing.id}`} >
+            <li className='listingItemImg'></li>
+            <li style={{ fontWeight: 'bold' }}>{listing.title}</li>
+            <li>{listing.address}</li>
+            <li style={{ fontWeight: 'bold' }}>${listing.price} night</li>
+        </Link>
     )
 }
     export default ListingIndexItem

@@ -14,3 +14,21 @@
     margin-bottom: 30px;
     margin-left: 78px;
 }
+
+
+#stickyContainer {
+    position: fixed;
+    /* top: 0; */
+    /* Adjust this value to set the distance from the top of the viewport */
+    /* left: 0; */
+    z-index: 999;
+    background-color: #ffffff;
+    width: 100%;
+}
+
+#catagories {
+    display: flex;
+    justify-content: space-between;
+    /* border: .5px solid #c4c4c4; */
+    height: 75px;
+}
