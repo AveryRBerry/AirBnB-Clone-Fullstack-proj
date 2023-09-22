@@ -9,10 +9,10 @@ export const receiveListings = listings => {
     }
 };
 
-export const receiveListing = listing => {
+export const receiveListing = data => {
     return {
         type: RECEIVE_LISTING,
-        listing
+        data
     }
 };
 
@@ -24,8 +24,10 @@ export const removeListing = listingId => {
 };
 
 export const getListing = listingId => {
+
     return state => {
-        if (state.listing) return state.listing[listingId];
+
+        if (state.listings) return state.listings[listingId];
         return null;
     }
 }
@@ -39,7 +41,9 @@ export const fetchListings = () => async dispatch => {
     const res = await fetch('/api/listings');
 
     if (res.ok) {
+
         const listings = await res.json();
+
         dispatch(receiveListings(listings));
     }
 }
@@ -48,8 +52,10 @@ export const fetchListing = listingId => async dispatch => {
     const res = await fetch(`/api/listings/${listingId}`);
 
     if (res.ok) {
-        const listings = await res.json();
-        dispatch(receiveListing(listings));
+
+        const listing = await res.json();
+
+        dispatch(receiveListing(listing));
     }
 }
 
@@ -101,7 +107,8 @@ const listingsReducer = (state = {}, action) => {
         case RECEIVE_LISTINGS:
             return { ...action.listings };
         case RECEIVE_LISTING:
-            nextState[action.listing.id] = action.listing;
+            // debugger
+            nextState[action.data.listing.id] = action.data.listing;
             return nextState;
         case REMOVE_LISTING:
             delete nextState[action.listingId];
