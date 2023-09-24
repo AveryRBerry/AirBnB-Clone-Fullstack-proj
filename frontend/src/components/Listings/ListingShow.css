@@ -1,8 +1,34 @@
-#test {
-    display: absolute;
-    border: 20px solid black;
-    width: 50%;
+#showContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    /* padding-top: 50%; */
     height: 50vh;
+    /* width: 1vh; */
+    border: 5px solid black;
+}
+
+
+#bigShowImg {
+    display: flex;
+    border: 10px solid black;
+    width: 50%;
+    /* height: 10vh; */
     background-color: white;
-    margin-top: 500px;
+    /* margin-top: 500px; */
+}
+
+#smallShowImg {
+    display: flex;
+    border: 10px solid black;
+    width: 10%;
+    /* height: 10vh; */
+    background-color: white;
+    /* margin-top: 500px; */
+}
+
+#smallShowImgContainer {
+    border: 5px solid black;
 }

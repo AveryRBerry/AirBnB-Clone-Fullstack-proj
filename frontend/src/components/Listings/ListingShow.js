@@ -24,7 +24,16 @@ const ListingShow = () => {
     
     return (
         <>
-            <h1 id='test'>{listing.title}</h1>
+            <div id='showContainer' >
+                <div id='bigShowImg'></div>
+                <div id='smallShowImgContainer'>
+                    <div id='smallShowImg'></div>
+                    <div id='smallShowImg'></div>
+                    <div id='smallShowImg'></div>
+                    <div id='smallShowImg'></div>
+                </div>
+                {/* <h1 id='test'>{listing.title}</h1> */}
+            </div>
         </>
     );
 }
