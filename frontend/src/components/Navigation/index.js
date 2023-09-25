@@ -6,21 +6,22 @@ import ProfileButton from './ProfileButton';
 // import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 import homeImage from '../../Assets/airdnd-try-again.png'
+import { useParams } from 'react-router-dom';
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
+  const {listingId} = useParams();
 
-  // const [showMenu, setShowMenu] = useState(false);
-  // const openMenu = () => {
-  //   setShowMenu(!showMenu);
-  // };
 
-    // sessionLinks = (
-    //   <>
-    //     <LoginFormModal />
-    //     <NavLink to="/signup">Sign Up</NavLink>
-    //   </>
-    // );
+  let catagories;
+  let navBar;
+  if (listingId) {
+    catagories = undefined
+    navBar = 'homeTopDisplayBar'
+  } else {
+    catagories = 'catagories'
+    navBar = 'showTopDisplayBar'
+  }
 
   return (
     <div id='stickyContainer'>
@@ -34,7 +35,7 @@ function Navigation() {
           <ProfileButton user={sessionUser} />
         </li>
       </ul>
-      <ul id='catagories'></ul>
+      {/* {catagories ? <ul  id='catagories'></ul> : null} */}
     </div>
   );
 }
