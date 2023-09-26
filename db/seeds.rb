@@ -5,17 +5,32 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require "open-uri"
+
+# Create User and Bench seeds...
+
+# # Attach bench photos
+# Bench.first(3).each_with_index do |bench, index|
+#   bench.photo.attach(
+#     # The string passed to URI.open should be the URL of the image in its bucket.
+#     # This sample assumes the bucket name is `benchbnb-seeds`.
+#     io: URI.open("https://benchbnb-seeds.s3.amazonaws.com/bench_#{index + 1}.jpg"), 
+#     filename: "bench_#{index + 1}.jpg"
+#   )
+# end
 
 ApplicationRecord.transaction do 
-puts "Destroying tables..."
+  puts "Destroying tables..."
 # Unnecessary if using `rails db:seed:replant`
-User.destroy_all
-Listing.destroy_all
+  Listing.destroy_all
+  User.destroy_all
 
-puts "Resetting primary keys..."
+
+  puts "Resetting primary keys..."
 # For easy testing, so that after seeding, the first `User` and `Listing` have `id` of 1
-ApplicationRecord.connection.reset_pk_sequence!('users')
-ApplicationRecord.connection.reset_pk_sequence!('listings')
+  ApplicationRecord.connection.reset_pk_sequence!('users')
+  ApplicationRecord.connection.reset_pk_sequence!('listings')
+end
 
 puts "Creating users..."
 # Create one user with an easy to remember username, email, and password:
@@ -31,7 +46,7 @@ puts "Creating listings..."
 
 
 #1
-Listing.create!(
+listing1 = Listing.create!(
   host_id: 1,
   address: '123 Main Street, New York, NY 10001',
   title: 'Cozy Cabin in the Woods',
@@ -48,8 +63,28 @@ Listing.create!(
   longitude: -74.0060
 )
 
+listing1_photo_urls = [
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/CozyCabin/CozyCabin1.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/CozyCabin/CozyCabin2.jpg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/CozyCabin/CozyCabin3.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/CozyCabin/CozyCabin4.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/CozyCabin/CozyCabin5.jpeg"
+]
+
+listing1_photo_urls.each_with_index do |url, index|
+  listing1.photos.attach(
+    io: URI.open(url),
+    filename: "photo_#{index + 1}"
+  )
+end
+
+# listing1
+
+
+
+
 #2
-Listing.create!(
+listing2 = Listing.create!(
   host_id: 1,
   address: '456 Elm Avenue, Los Angeles, CA 90001',
   title: 'Lakeview Retreat',
@@ -67,7 +102,7 @@ Listing.create!(
 )
 
 #3
-Listing.create!(
+listing3 = Listing.create!(
   host_id: 1,
   address: '789 Oak Road, Chicago, IL 60601',
   title: 'Mermaid Cove Villa',
@@ -85,7 +120,7 @@ Listing.create!(
 )
 
 #4
-Listing.create!(
+listing4 = Listing.create!(
   host_id: 1,
   address: "101 Maple Lane, Miami, FL 33101",
   title: "Wizard's Cottage",
@@ -103,7 +138,7 @@ Listing.create!(
 )
 
 #5
-Listing.create!(
+listing5 = Listing.create!(
   host_id: 1,
   address: "234 Pine Street, San Francisco, CA 94101",
   title: "Enchanted Forest Cabin",
@@ -121,7 +156,7 @@ Listing.create!(
 )
 
 #6
-Listing.create!(
+listing6 = Listing.create!(
   host_id: 1,
   address: "567 Cedar Drive, Austin, TX 78701",
   title: "Atlantis Underwater Palace",
@@ -139,7 +174,7 @@ Listing.create!(
 )
 
 #7
-Listing.create!(
+listing7 = Listing.create!(
   host_id: 1,
   address: "890 Birch Boulevard, Seattle, WA 98101",
   title: "Dragon's Den Retreat",
@@ -157,7 +192,7 @@ Listing.create!(
 )
 
 # 8
-Listing.create!(
+listing8 = Listing.create!(
   host_id: 1,
   address: "1234 Willow Lane, Denver, CO 80201",
   title: "Enchanted Hillside Castle",
@@ -175,7 +210,7 @@ Listing.create!(
 )
 
 # 9
-Listing.create!(
+listing9 = Listing.create!(
   host_id: 1,
   address: "5678 Spruce Road, Atlanta, GA 30301",
   title: "Mermaid's Paradise Villa",
@@ -193,7 +228,7 @@ Listing.create!(
 )
 
 # 10
-Listing.create!(
+listing10 = Listing.create!(
   host_id: 1,
   address: "111 Redwood Avenue, Boston, MA 02101",
   title: "Unicorn Retreat",
@@ -211,7 +246,7 @@ Listing.create!(
 )
 
 # 11
-Listing.create!(
+listing11 = Listing.create!(
   host_id: 1,
   address: "222 Sequoia Street, New Orleans, LA 70101",
   title: "Enchanted Forest Lodge",
@@ -229,7 +264,7 @@ Listing.create!(
 )
 
 # 12
-Listing.create!(
+listing12 = Listing.create!(
   host_id: 1,
   address: "333 Magnolia Drive, Portland, OR 97201",
   title: "Dragon's Lair Hideaway",
@@ -246,7 +281,8 @@ Listing.create!(
   longitude: -111.7602
 )
 
-Listing.create!(
+# 13
+listing13 = Listing.create!(
   host_id: 1,
   address: "42 Merlin's Way",
   title: "Wizard's Tower with a Magic Library",
@@ -263,7 +299,8 @@ Listing.create!(
   longitude: -122.6587
 )
 
-Listing.create!(
+# 14
+listing14 = Listing.create!(
   host_id: 1,
   address: "789 Fantasy Street",
   title: "Hobbit Hole in the Shire",
@@ -280,7 +317,8 @@ Listing.create!(
   longitude: -0.1278
 )
 
-Listing.create!(
+# 15
+listing15 = Listing.create!(
   host_id: 1,
   address: "123 Dragonfly Lane",
   title: "Dragon Keep with Friendly Fire-breathing Dragon",
@@ -297,8 +335,8 @@ Listing.create!(
   longitude: -122.4194
 )
 
-
-Listing.create!(
+# 16
+listing16 = Listing.create!(
   host_id: 1,
   address: "456 Enchanted Avenue",
   title: "Mystical Cottage in the Enchanted Forest",
@@ -315,7 +353,8 @@ Listing.create!(
   longitude: -87.6298
 )
 
-Listing.create!(
+# 17
+listing17 = Listing.create!(
   host_id: 1,
   address: "789 Wizardry Lane",
   title: "Magician's Retreat with Floating Carpets",
@@ -332,7 +371,8 @@ Listing.create!(
   longitude: -0.1278
 )
 
-Listing.create!(
+# 18
+listing18 = Listing.create!(
   host_id: 1,
   address: "123 Wizard's Alley",
   title: "Quaint Wizard's Cottage",
@@ -350,4 +390,3 @@ Listing.create!(
 )
 
 puts "Done!"
-end

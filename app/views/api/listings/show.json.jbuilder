@@ -16,6 +16,10 @@ json.listing do
         :latitude,
         :longitude
     # json.photoUrls @listing.photos
+    # json.set! :image_url, @listing.image.url
+    json.photos @listing.photos do |photo|
+        json.photo_url url_for(photo)
+    end
 end
 
 json.host do

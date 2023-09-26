@@ -5,12 +5,6 @@ import { getListing, fetchListing} from '../../store/listings';
 import './ListingShow.css'
 import { getUser } from '../../store/users'
 
-// temp img imports
-import hobbitHouse1 from '../../Assets/hobbitHouse1.webp'
-import hobbitHouse2 from '../../Assets/hobbitHouse2.png'
-import hobbitHouse3 from '../../Assets/hobbitHouse3.jpeg'
-import hobbitHouse4 from '../../Assets/hobbitHouse4.webp'
-import hobbitHouse5 from '../../Assets/hobbitHouse5.jpeg'
 
 
 
@@ -27,6 +21,8 @@ const ListingShow = () => {
     }, [listingId, dispatch]);
 
     if (!listing || !user ) return null
+
+    console.log(listing.photos[0].photoUrl)
     
     return (
         <>
@@ -34,12 +30,12 @@ const ListingShow = () => {
                 <div id='showPageTitle'>{listing.title}</div>
                 <div id='miniNavBarShowPage'>Stars...   Reviews...   {listing.address}</div>
                 <div id='showImgContainer' >
-                    <img id='bigShowImg' src={hobbitHouse1} alt='Listing img' />
+                    <img id='bigShowImg' src={listing.photos[0].photoUrl} alt='Listing img' />
                     <div id='smallShowImgContainer'>
-                        <img id='smallShowImg' src={hobbitHouse2} alt='Listing img' />
-                        <img id='smallShowImg' src={hobbitHouse3} alt='Listing img' />
-                        <img id='smallShowImg' src={hobbitHouse4} alt='Listing img' />
-                        <img id='smallShowImg' src={hobbitHouse5} alt='Listing img' />
+                        <img id='smallShowImg' src={listing.photos[1].photoUrl} alt='Listing img' />
+                        <img id='smallShowImg' src={listing.photos[2].photoUrl} alt='Listing img' />
+                        <img id='smallShowImg' src={listing.photos[3].photoUrl} alt='Listing img' />
+                        <img id='smallShowImg' src={listing.photos[4].photoUrl} alt='Listing img' />
 
                     </div>
                 </div>
