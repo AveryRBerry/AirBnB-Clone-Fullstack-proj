@@ -1,31 +1,38 @@
 import React from 'react';
-// import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-// import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 import homeImage from '../../Assets/airdnd-try-again.png'
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
-  const {listingId} = useParams();
+    const location = useLocation();
 
+  const currentPathway = location.pathname;
 
   let catagories;
   let navBar;
-  if (listingId) {
+
+  const segments = currentPathway.split('/');
+  const id = segments[segments.length - 1];
+
+  // console.log(id)
+
+  if (id) {
     catagories = undefined
-    navBar = 'homeTopDisplayBar'
+    navBar = 'showTopDisplayBar'
   } else {
     catagories = 'catagories'
-    navBar = 'showTopDisplayBar'
+    navBar = 'homeTopDisplayBar'
   }
+
+
 
   return (
     <div id='stickyContainer'>
-      <ul id='homeTopDisplayBar'>
+      <ul id={navBar}>
         <li>
           <NavLink exact to="/">
             <img id='AirDnDHomeButton' src={homeImage} alt="Home" />
@@ -35,7 +42,7 @@ function Navigation() {
           <ProfileButton user={sessionUser} />
         </li>
       </ul>
-      {/* {catagories ? <ul  id='catagories'></ul> : null} */}
+      {catagories ? <ul  id='catagories'></ul> : null}
     </div>
   );
 }

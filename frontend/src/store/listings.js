@@ -54,7 +54,7 @@ export const fetchListing = listingId => async dispatch => {
     if (res.ok) {
 
         const listing = await res.json();
-
+        // debugger
         dispatch(receiveListing(listing));
     }
 }

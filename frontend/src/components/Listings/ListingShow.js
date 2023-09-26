@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getListing, fetchListing} from '../../store/listings';
 import './ListingShow.css'
+import { getUser } from '../../store/users'
 
 // temp img imports
 import hobbitHouse1 from '../../Assets/hobbitHouse1.webp'
@@ -17,9 +18,7 @@ const ListingShow = () => {
 
     const {listingId} = useParams();
     const listing = useSelector(getListing(listingId));
-
-    // localStorage.setItem('listing', JSON.stringify(listing));
-    // if (listing === undefined)  listing = JSON.parse(localStorage.getItem('listing'));
+    const user = useSelector(getUser(listing?.hostId));
 
     const dispatch = useDispatch();
 
@@ -27,7 +26,7 @@ const ListingShow = () => {
         dispatch(fetchListing(listingId));
     }, [listingId, dispatch]);
 
-    if (!listing) return null
+    if (!listing || !user ) return null
     
     return (
         <>
@@ -43,8 +42,31 @@ const ListingShow = () => {
                         <img id='smallShowImg' src={hobbitHouse5} alt='Listing img' />
 
                     </div>
-                    {/* <h1 id='test'>{listing.title}</h1> */}
                 </div>
+
+                <div id='firstHalfShowInformationBox'>
+                    <div id='listingInformation'>
+                        <div id='hostedByUsername'>Hosted by {user.firstName} {user.lastName}</div>
+                        <div>{listing.numBedrooms} bedrooms : {listing.numBeds} beds : {listing.numberBathrooms} : baths</div>
+                        <div id='showDescription'>{listing.description}</div>
+                    </div>
+                    <form id='tempBookingForm'>
+                        Booking Form
+                    </form>
+                </div>
+                <div>
+                    <div id='amenitiesTitle'>What this place offers</div>
+                    <ul id='amenities'>
+                        <li><i className="fa fa-snowflake-o"></i> {listing.hasAc ? 'AC : YES' : 'AC : NO'}</li>
+                        <li><i className="fa fa-wifi"></i> {listing.hasWifi ? 'WiFi : YES' : 'WiFi : NO'}</li>
+                        <li><i className="fa fa-paw"></i> {listing.hasPetsAllowed ? 'Pets allowed : YES' : 'Pets allowed : NO'}</li>
+                        <li><i className="fas fa-tshirt"></i> {listing.hasWasherDryer ? 'Washer and Dryer : YES' : 'Washer and Dryer : NO'}</li>
+                    </ul>
+                </div>
+                <div id='showPlaceholder'>Calendar</div>
+                <div id='showPlaceholder'>Reviews</div>
+                <div id='showPlaceholder'>Map</div>
+                <div is='showPlaceholder'>Host information</div>
             </div>
         </>
     );

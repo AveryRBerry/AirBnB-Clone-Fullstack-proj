@@ -15,4 +15,13 @@ json.listing do
         :has_washer_dryer,
         :latitude,
         :longitude
+    # json.photoUrls @listing.photos
+end
+
+json.host do
+    json.extract! @listing.host, 
+    :id,
+    :email,
+    :first_name,
+    :last_name
 end
