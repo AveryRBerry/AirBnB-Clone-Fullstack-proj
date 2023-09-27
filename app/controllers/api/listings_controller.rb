@@ -40,6 +40,14 @@ class Api::ListingsController < ApplicationController
         end
     end
 
+    def search
+        query = params[:query]
+
+        @listings = Listing.where('title ILIKE ?', "%#{query}%")
+# //OR city       ,%#{query}%
+        render :search
+    end
+
     private
 
     # not sure if needed

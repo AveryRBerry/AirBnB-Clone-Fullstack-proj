@@ -5,6 +5,7 @@ import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import homeImage from '../../Assets/airdnd-try-again.png'
 import { useLocation } from 'react-router-dom';
+import NavSearch from './NavSearch'
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
@@ -38,13 +39,14 @@ function Navigation() {
             <img id='AirDnDHomeButton' src={homeImage} alt="Home" />
           </NavLink>
         </li>
-
+{/* 
         <div className="search-bar">
           <input type="text" className="search-input" placeholder="Search..." />
           <button type="submit" className="search-button">
             <i className="fa-solid fa-magnifying-glass"></i>
           </button>
-        </div>
+        </div> */}
+        <NavSearch></NavSearch>
 
         <li>
           <ProfileButton user={sessionUser} />
