@@ -4,17 +4,12 @@
     margin-right: 78px;
     display: inline-block;
     padding: 5px 5px;
-    /* Adjust padding as needed for the button size */
     background-color: #ffffff;
-    /* Button background color */
     color: #8d8787;
-    /* Text color */
-    border: .5px solid #c4c4c4; /* Black border */
+    border: .5px solid #c4c4c4;
     cursor: pointer;
     border-radius: 20px;
-    /* Half of the button width to create half circles */
     font-size: 30px;
-    /* Adjust the size as needed */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -94,6 +89,7 @@
     padding: 0px;
     background-color: white;
     border: none;
+    cursor: pointer;
 }
 
 .fa-times {

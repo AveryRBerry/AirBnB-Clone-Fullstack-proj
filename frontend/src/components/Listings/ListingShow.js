@@ -22,7 +22,7 @@ const ListingShow = () => {
 
     if (!listing || !user ) return null
 
-    console.log(listing.photos[0].photoUrl)
+    // console.log(listing)
     
     return (
         <>
@@ -47,7 +47,15 @@ const ListingShow = () => {
                         <div id='showDescription'>{listing.description}</div>
                     </div>
                     <form id='tempBookingForm'>
-                        Booking Form
+                        <div id='topBookingFormInfo'>
+                            <div>${listing.price} night</div>
+                            <div>Reviews...</div>
+                        </div>
+                        <div id='bookingFormDropDownButtonsContainer'>
+                            <button className='bookingFormDropDownButtons' />
+                            <button className='bookingFormDropDownButtons' />
+                        </div>
+                        <button className='bigBookingFormDropDownButton' />
                     </form>
                 </div>
                 <div>

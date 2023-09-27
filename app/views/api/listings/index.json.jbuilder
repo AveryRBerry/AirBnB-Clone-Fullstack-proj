@@ -17,9 +17,9 @@
             :has_washer_dryer,
             :latitude,
             :longitude
-        # json.photos listing.photos do |photo|
-        #     json.photo_url url_for(photo)
-        # end
+        json.photos listing.photos do |photo|
+            json.photo_url url_for(photo)
+        end
     end
 
     json.host do

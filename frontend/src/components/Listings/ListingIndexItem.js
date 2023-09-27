@@ -8,13 +8,10 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'font-awesome/css/font-awesome.min.css';
 
-
-
-
-
-const images = [hobbitHouse1, hobbitHouse2, hobbitHouse3]
-
 const ListingIndexItem = ({listing}) => {
+
+    let images =[hobbitHouse1, hobbitHouse2, hobbitHouse3]
+    if (listing.photos[0].photoUrl) images = [listing.photos[0].photoUrl, listing.photos[1].photoUrl, listing.photos[2].photoUrl, listing.photos[3].photoUrl, listing.photos[4].photoUrl]
 
     const sliderSettings = {
         dots: false,
@@ -36,6 +33,9 @@ const ListingIndexItem = ({listing}) => {
         e.stopPropagation()
         slider.slickNext();
     };
+
+    // console.log('********hello???')
+    // console.log('********')
 
     let slider;
 

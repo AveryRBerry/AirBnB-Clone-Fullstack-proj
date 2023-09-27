@@ -38,6 +38,14 @@ function Navigation() {
             <img id='AirDnDHomeButton' src={homeImage} alt="Home" />
           </NavLink>
         </li>
+
+        <div className="search-bar">
+          <input type="text" className="search-input" placeholder="Search..." />
+          <button type="submit" className="search-button">
+            <i className="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+
         <li>
           <ProfileButton user={sessionUser} />
         </li>

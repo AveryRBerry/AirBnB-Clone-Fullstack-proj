@@ -13,10 +13,11 @@ const ListingIndex = () => {
         dispatch(fetchListings());
     }, [dispatch]);
 
+
     return (
         <>
             <ul id='listingsIndexPage'>
-                {listings.map(listing => {
+                {listings.slice(0, -1).map(listing => {
                     return <ListingIndexItem key={listing.id} listing={listing} />
                 })}
             </ul>

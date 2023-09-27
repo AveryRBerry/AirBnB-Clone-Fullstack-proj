@@ -59,3 +59,48 @@
     border-left: none;
     margin-top: 20px
 }
+
+
+
+
+
+
+
+
+.search-bar {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 35px;
+    overflow: hidden;
+    height: 60%;
+    width: 23%;
+    margin-top: 1%;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+    transition: box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.search-bar:hover {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    border-radius: 35px 0 0 35px;
+    outline: none;
+}
+
+.search-button {
+    border: none;
+    background-color: rgb(255, 0, 89);
+    color: #fff;
+    margin-right: 4%;
+    margin-top: 8px;
+    border-radius: 100%;
+    cursor: pointer;
+    font-size: 13px;
+    width: 32px;
+    height: 32px;
+}
