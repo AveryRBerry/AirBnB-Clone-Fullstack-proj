@@ -13,7 +13,7 @@ export const clearSearchResults = () => ({
 });
 
 export const fetchSearchResults = (query) => async dispatch => {
-    const res = await csrfFetch(`api/listings/search?query=${query}`)
+    const res = await csrfFetch(`/api/listings/search?query=${query}`)
     const data = await res.json();
 
     dispatch(receiveSearchResults(data));

@@ -5,14 +5,20 @@ import ListingIndexItem from './ListingIndexItem';
 import './ListingIndex.css'
 
 
-const ListingIndex = () => {
-    const listings = useSelector(getListings);
+const ListingIndex = ({searchResults}) => {
+    let listings = useSelector(getListings);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(fetchListings());
     }, [dispatch]);
 
+    // console.log('********')
+    // console.log(searchResults)
+    // console.log(listings)
+    // console.log('********')
+
+    if (searchResults) listings = searchResults
 
     return (
         <>

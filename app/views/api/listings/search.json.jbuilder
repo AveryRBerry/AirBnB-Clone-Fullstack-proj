@@ -19,9 +19,11 @@ json.listings do
                 :has_washer_dryer,
                 :latitude,
                 :longitude
-                # json.photos @listing.photos do |photo|
-                #     json.photo_url url_for(photo)
-                # end
+            if listing.photos.present?
+                json.photos listing.photos do |photo|
+                    json.photo_url url_for(photo)
+                end
+            end
         end
     end
 end

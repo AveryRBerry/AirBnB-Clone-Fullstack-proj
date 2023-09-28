@@ -16,7 +16,7 @@ function NavSearch() {
         const query = e.target.value;
         setSearchText(query);
         if (query.trim() !== "" ) {
-            dispatch(fetchSearchResults(query))
+            dispatch(fetchSearchResults(query))//have to fix this so that, no auto change on query text bar change
         } else {
             dispatch(clearSearchResults())
         }
