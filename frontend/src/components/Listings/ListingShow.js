@@ -52,10 +52,11 @@ const ListingShow = () => {
                             <div>Reviews...</div>
                         </div>
                         <div id='bookingFormDropDownButtonsContainer'>
-                            <button className='bookingFormDropDownButtons' />
-                            <button className='bookingFormDropDownButtons' />
+                            <button className='bookingFormDropDownButtons'>CHECK-IN</button>
+                            <button className='bookingFormDropDownButtons' >CHECKOUT</button>
                         </div>
-                        <button className='bigBookingFormDropDownButton' />
+                        <button className='bigBookingFormDropDownButton' >GUESTS</button>
+                        <button id='bigRedBookingReserveFormButton'>Reserve</button>
                     </form>
                 </div>
                 <div>
@@ -67,10 +68,10 @@ const ListingShow = () => {
                         <li><i className="fas fa-tshirt"></i> {listing.hasWasherDryer ? 'Washer and Dryer : YES' : 'Washer and Dryer : NO'}</li>
                     </ul>
                 </div>
-                <div id='showPlaceholder'>Calendar</div>
+                {/* <div id='showPlaceholder'>Calendar</div>
                 <div id='showPlaceholder'>Reviews</div>
                 <div id='showPlaceholder'>Map</div>
-                <div is='showPlaceholder'>Host information</div>
+                <div is='showPlaceholder'>Host information</div> */}
             </div>
         </>
     );

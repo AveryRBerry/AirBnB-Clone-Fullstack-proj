@@ -8,16 +8,31 @@ import ListingIndex from '../Listings/ListingIndex';
 const Search = () => {
     const dispatch = useDispatch();
     const location = useLocation();
-    const searchResults = useSelector((state) => state.search);
+
+    // if ()
+    const searchResults = useSelector((state) => state.search);///this could also be a source of fixing prb
+
+
     const searchParams = new URLSearchParams(location.search);
     const query = searchParams.get("query");
     const noResults = Object.keys(searchResults).length === 0;
+
+    // let locationCheck = location;
+    // let newSearch = false;
     
     useEffect(() => {
         if (query) {
             dispatch(fetchSearchResults(query));
         }
     }, [query,dispatch]);
+
+    // useEffect(() => {
+
+    //     newSearch = true
+
+    // }, [locationCheck])
+
+    // if (!newSearch) return null
 
     return(
         <>

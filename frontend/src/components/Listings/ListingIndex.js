@@ -13,11 +13,6 @@ const ListingIndex = ({searchResults}) => {
         dispatch(fetchListings());
     }, [dispatch]);
 
-    // console.log('********')
-    // console.log(searchResults)
-    // console.log(listings)
-    // console.log('********')
-
     if (searchResults) listings = searchResults
 
     return (

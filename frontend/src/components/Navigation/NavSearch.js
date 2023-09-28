@@ -1,9 +1,8 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSearchResults, clearSearchResults } from '../../store/search';
 import { useHistory } from 'react-router-dom';
-
-
+// import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 
 function NavSearch() {
 
@@ -11,6 +10,7 @@ function NavSearch() {
     const dispatch = useDispatch();
     const searchResults = useSelector(state => Object.values(state.search))
     const history = useHistory();
+
 
     function handleChange(e) {
         const query = e.target.value;
@@ -21,6 +21,19 @@ function NavSearch() {
             dispatch(clearSearchResults())
         }
     }
+
+    const dropDownSearchRef = useRef(null)
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (dropDownSearchRef.current && !dropDownSearchRef.current.contains(event.target)) {
+                setSearchText("");
+            }
+        }
+        document.addEventListener('click', handleClickOutside);
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    })
 
     function handleClickLink(id) {
         return(e) => {
@@ -39,9 +52,16 @@ function NavSearch() {
         }
     };
 
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            handleSubmit(e);
+        }
+    };
+
     return (
         <div className='search-bar'>
             <input
+                onKeyDown={handleKeyPress}
                 type="text"
                 className="search-input"
                 placeholder="Find your adventure"
@@ -52,7 +72,7 @@ function NavSearch() {
                 <i className="fa-solid fa-magnifying-glass"></i>
             </button> 
             {searchText && 
-                <ul id='search-dropdown'>
+                <ul id='search-dropdown' ref={dropDownSearchRef}>
                     {searchResults.map(result => {
                         return (
                             <li key={result.id} onClick={handleClickLink(result.id)} className='search-dropdown-item'>

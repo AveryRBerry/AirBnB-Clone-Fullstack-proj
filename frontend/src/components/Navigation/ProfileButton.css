@@ -59,9 +59,7 @@
     cursor: pointer;
     border-radius: 0px;
     width: 100%;
-    /* Expand to fill the available space */
     text-align: left;
-    /* Align content to the left */
     transition: background-color 0s ease;
 }
 
