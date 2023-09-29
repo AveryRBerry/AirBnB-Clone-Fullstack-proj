@@ -12,6 +12,8 @@ ApplicationRecord.transaction do
 end
 
 puts "Creating users..."
+
+#1 demo
 User.create!(
   email: 'demo@user.io', 
   password: '!StrongPassword232305',
@@ -19,11 +21,59 @@ User.create!(
   first_name: 'DemoFirstName'
 )
 
+#2 wiz
+User.create!(
+  email: 'demo@user2.io', 
+  password: '!StrongPassword232305',
+  last_name: 'Grey',
+  first_name: 'Axar'
+)
+
+#3 Atlanna
+User.create!(
+  email: 'demo@user3.io', 
+  password: '!StrongPassword232305',
+  last_name: 'Daanuth',
+  first_name: 'Garng'
+)
+
+#4 Horror
+User.create!(
+  email: 'demo@user4.io', 
+  password: '!StrongPassword232305',
+  last_name: 'Myers',
+  first_name: 'Michael'
+)
+
+#5 Hobbit
+User.create!(
+  email: 'demo@user5.io', 
+  password: '!StrongPassword232305',
+  last_name: 'Baggins',
+  first_name: 'Frodo'
+)
+
+#6 Candy witch
+User.create!(
+  email: 'demo@user6.io', 
+  password: '!StrongPassword232305',
+  last_name: 'Yaga',
+  first_name: 'Baba'
+)
+
+#7 Defualt sale
+User.create!(
+  email: 'demo@user7.io', 
+  password: '!StrongPassword232305',
+  last_name: 'Mays',
+  first_name: 'Billy'
+)
+
 puts "Creating listings..."
 
 #1
 listing1 = Listing.create!(
-  host_id: 1,
+  host_id: 4,
   address: '13 Main Street, New York, NY 13131',
   title: 'Cozy Cabin in the Woods',
   description: "Unplug, unwind, and let the wilderness be your guide. From creaking floorboards to flickering candlelight, every moment here is an opportunity to discover the unexpected. The 'Cozy Cabin in the Woods' invites you to trade the ordinary for the extraordinary. (Any movement or structural changes to the premises are completely normal and nothing to worry about.)",
@@ -56,10 +106,10 @@ end
 
 #2
 listing2 = Listing.create!(
-  host_id: 1,
+  host_id: 5,
   address: "789 Fantasy Street",
   title: "Hobbit Hole in the Shire",
-  description: "Live like a hobbit in this cozy underground dwelling surrounded by rolling hills.",
+  description: "Welcome to my cozy Hobbit Hole, nestled snugly into the earth with all the charm and comfort a hobbit could ever desire! Step through the round doorway, and you'll find yourself in a world of rustic elegance – from the earthy tones of the walls to the cozy nooks where you can enjoy a second breakfast or curl up with a good book. The sunlight filters through the lush, green roof, casting a warm, dappled glow on the handcrafted furnishings.",
   num_beds: 1,
   num_bedrooms: 1,
   number_bathrooms: 1,
@@ -89,14 +139,14 @@ end
 
 #3
 listing3 = Listing.create!(
-  host_id: 1,
+  host_id: 2,
   address: "101 Maple Lane, Miami, FL 33101",
   title: "Wizard's Cottage",
-  description: "Live like a wizard in this magical cottage located in the heart of Salem, Massachusetts.",
+  description: "Behold this peculiar 'Witchy Cottage,' a maddening hodgepodge of mystical oddities and endless headaches. From the crooked, leaning walls that defy all logic to the stubborn creaks and groans that serve as the house's morning serenade, it's a nightmare wrapped in enchanted confusion. The self-refilling cauldron in the kitchen? More trouble than it's worth. And don't get me started on the talking portraits that offer unsolicited advice. I've had enough of this chaotic abode, and if you have any sense, you'll stay far, far away! So its 50% off atm",
   num_beds: 3,
   num_bedrooms: 2,
   number_bathrooms: 2,
-  price: 180.0,
+  price: 50.0,
   has_ac: true,
   has_wifi: true,
   has_pets_allowed: false,
@@ -120,274 +170,303 @@ listing3_photo_urls.each_with_index do |url, index|
   )
 end
 
-# #4
-# listing4 = Listing.create!(
-#   host_id: 1,
-#   address: '789 Oak Road, Chicago, IL 60601',
-#   title: 'Mermaid Cove Villa',
-#   description: "Experience the charm of a mermaid's paradise in Key West, Florida, complete with underwater views.",
-#   num_beds: 4,
-#   num_bedrooms: 3,
-#   number_bathrooms: 2,
-#   price: 250.0,
-#   has_ac: true,
-#   has_wifi: true,
-#   has_pets_allowed: false,
-#   has_washer_dryer: true,
-#   latitude: 24.5551,
-#   longitude: -81.7799
-# )
 
-# #5
-# listing5 = Listing.create!(
-#   host_id: 1,
-#   address: "234 Pine Street, San Francisco, CA 94101",
-#   title: "Enchanted Forest Cabin",
-#   description: "Escape to an enchanted forest in this cozy cabin nestled in the Olympic National Park, Washington.",
-#   num_beds: 2,
-#   num_bedrooms: 1,
-#   number_bathrooms: 1,
-#   price: 120.0,
-#   has_ac: true,
-#   has_wifi: true,
-#   has_pets_allowed: true,
-#   has_washer_dryer: false,
-#   latitude: 47.8295,
-#   longitude: -123.6405
-# )
+#4
+listing4 = Listing.create!(
+  host_id: 6,
+  address: "234 Pine Street, San Francisco, CA 94101",
+  title: "Candy Cabin",
+  description: "🍭 Step into the Enchanted Candy Cabin, a place with secrets woven by a mysterious and delightful host. Immerse yourself in rooms adorned with gingerbread, marshmallow-soft beds, and a fireplace with secrets of its own. The kitchen is a candy maker's paradise, and outside, a forest holds hidden wonders, with candy mushrooms and peppermint flowers. Your hosts, with a touch of enchantment, are ready to make your stay truly magical. Book now for a sweet escape! 🍬🌲🏡",
+  num_beds: 2,
+  num_bedrooms: 1,
+  number_bathrooms: 1,
+  price: 1.55,
+  has_ac: true,
+  has_wifi: true,
+  has_pets_allowed: true,
+  has_washer_dryer: false,
+  latitude: 47.8295,
+  longitude: -123.6405
+)
+
+listing4_photo_urls = [
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/CandyCabin/CandyCabin1.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/CandyCabin/CandyCabin4.webp",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/CandyCabin/CandyCabin2.webp",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/CandyCabin/CandyCabin5.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/CandyCabin/CandyCabin3.jpeg"
+]
+
+listing4_photo_urls.each_with_index do |url, index|
+  listing4.photos.attach(
+    io: URI.open(url),
+    filename: "photo_#{index + 1}"
+  )
+end
+
+#5
+listing5 = Listing.create!(
+  host_id: 3,
+  address: "567 Cedar Drive, Austin, TX 78701",
+  title: "Atlantis Underwater Palace",
+  description: "🌊 Behold the Kingdom of Atlantis, a realm veiled beneath the ocean's embrace, sculpted by the wisdom of its illustrious monarch. As you descend into the depths, be captivated by the coral castles and seashell-adorned throne room. Within, luxuriate in chambers with beds fit for royalty and dining halls resplendent with ocean's bounty.",
+  num_beds: 7568,
+  num_bedrooms: 4237,
+  number_bathrooms: 4354,
+  price: 99999.99,
+  has_ac: false,
+  has_wifi: false,
+  has_pets_allowed: false,
+  has_washer_dryer: false,
+  latitude: 25.7772,
+  longitude: -80.1865
+)
+
+listing5_photo_urls = [
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/Atlantis/Atlantis1.avif",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/Atlantis/Atlantis5.webp",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/Atlantis/Atlantis3.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/Atlantis/Atlantis2.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/Atlantis/Atlantis4.jpeg"
+]
+
+listing5_photo_urls.each_with_index do |url, index|
+  listing5.photos.attach(
+    io: URI.open(url),
+    filename: "photo_#{index + 1}"
+  )
+end
 
 # #6
-# listing6 = Listing.create!(
-#   host_id: 1,
-#   address: "567 Cedar Drive, Austin, TX 78701",
-#   title: "Atlantis Underwater Palace",
-#   description: "Experience luxury living in a submerged palace beneath the waves of Miami, Florida.",
-#   num_beds: 5,
-#   num_bedrooms: 4,
-#   number_bathrooms: 3,
-#   price: 550.0,
-#   has_ac: true,
-#   has_wifi: false,
-#   has_pets_allowed: false,
-#   has_washer_dryer: true,
-#   latitude: 25.7772,
-#   longitude: -80.1865
-# )
+listing6 = Listing.create!(
+  host_id: 7,
+  address: "890 Birch Boulevard, Seattle, WA 98101",
+  title: "Dragon's Den Retreat",
+  description: "Imagine living in a mystical cave, nestled amidst rugged mountains, with the heart of a dragon. This extraordinary abode offers an unparalleled blend of ancient allure and modern comfort. The cavernous interior boasts spacious chambers adorned with iridescent crystals, where sunlight dances on stone walls. Your own dragon's lair, complete with a subterranean hot spring and a treasure trove of geological wonders, awaits.",
+  num_beds: 3,
+  num_bedrooms: 2,
+  number_bathrooms: 2,
+  price: 190.0,
+  has_ac: true,
+  has_wifi: true,
+  has_pets_allowed: false,
+  has_washer_dryer: true,
+  latitude: 40.0155,
+  longitude: -105.2657
+)
 
-# #7
-# listing7 = Listing.create!(
-#   host_id: 1,
-#   address: "890 Birch Boulevard, Seattle, WA 98101",
-#   title: "Dragon's Den Retreat",
-#   description: "Discover the hidden dragon's den in the mystical forests of Boulder, Colorado.",
-#   num_beds: 3,
-#   num_bedrooms: 2,
-#   number_bathrooms: 2,
-#   price: 190.0,
-#   has_ac: true,
-#   has_wifi: true,
-#   has_pets_allowed: false,
-#   has_washer_dryer: true,
-#   latitude: 40.0155,
-#   longitude: -105.2657
-# )
+listing6_photo_urls = [
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/DragonDen/DragonDen1.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/DragonDen/DragonDen3.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/DragonDen/DragonDen4.webp",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/DragonDen/DragonDen2.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/DragonDen/DragonDen5.jpg"
+]
 
-# # 8
-# listing8 = Listing.create!(
-#   host_id: 1,
-#   address: "1234 Willow Lane, Denver, CO 80201",
-#   title: "Enchanted Hillside Castle",
-#   description: "Live like royalty in this enchanted castle perched on the hills of Asheville, North Carolina.",
-#   num_beds: 6,
-#   num_bedrooms: 4,
-#   number_bathrooms: 4,
-#   price: 320.0,
-#   has_ac: true,
-#   has_wifi: true,
-#   has_pets_allowed: true,
-#   has_washer_dryer: true,
-#   latitude: 35.6030,
-#   longitude: -82.5542
-# )
+listing6_photo_urls.each_with_index do |url, index|
+  listing6.photos.attach(
+    io: URI.open(url),
+    filename: "photo_#{index + 1}"
+  )
+end
 
-# # 9
-# listing9 = Listing.create!(
-#   host_id: 1,
-#   address: "5678 Spruce Road, Atlanta, GA 30301",
-#   title: "Mermaid's Paradise Villa",
-#   description: "Experience the charm of a mermaid's paradise in Key West, Florida, complete with underwater views.",
-#   num_beds: 4,
-#   num_bedrooms: 3,
-#   number_bathrooms: 2,
-#   price: 260.0,
-#   has_ac: true,
-#   has_wifi: true,
-#   has_pets_allowed: false,
-#   has_washer_dryer: true,
-#   latitude: 24.5559,
-#   longitude: -81.7817
-# )
+# 7
+listing7 = Listing.create!(
+  host_id: 7,
+  address: "1234 Willow Lane, Denver, CO 80201",
+  title: "Enchanted Hillside Castle",
+  description: "Introducing the 'Majestic Relic Castle' - it's the epitome of timeless charm! Sure, it's a bit weathered, but that just adds character, right? Step into a world of regal nostalgia where history meets opportunity. This castle might need a little TLC, but think of it as a blank canvas for your dreams. The grand hall may have seen more elegant days, but with a dash of imagination, it could host the grandest of galas! Plus, the spacious chambers offer unique airflow options (a.k.a. the open windows), and the garden, well, let's call it an 'untamed paradise.'",
+  num_beds: 478,
+  num_bedrooms: 323,
+  number_bathrooms: 311,
+  price: 10000.0,
+  has_ac: true,
+  has_wifi: true,
+  has_pets_allowed: true,
+  has_washer_dryer: true,
+  latitude: 35.6030,
+  longitude: -82.5542
+)
 
-# # 10
-# listing10 = Listing.create!(
-#   host_id: 1,
-#   address: "111 Redwood Avenue, Boston, MA 02101",
-#   title: "Unicorn Retreat",
-#   description: "Embark on a magical journey in this retreat nestled in the picturesque hills of Aspen, Colorado.",
-#   num_beds: 3,
-#   num_bedrooms: 2,
-#   number_bathrooms: 2,
-#   price: 220.0,
-#   has_ac: true,
-#   has_wifi: true,
-#   has_pets_allowed: false,
-#   has_washer_dryer: true,
-#   latitude: 39.1877,
-#   longitude: -106.8181
-# )
+listing7_photo_urls = [
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/Castle/Castle1.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/Castle/Castle5.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/Castle/Castle3.avif",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/Castle/Castle4.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/Castle/Castle2.jpeg"
+]
 
-# # 11
-# listing11 = Listing.create!(
-#   host_id: 1,
-#   address: "222 Sequoia Street, New Orleans, LA 70101",
-#   title: "Enchanted Forest Lodge",
-#   description: "Escape to an enchanted forest in this charming lodge located in Gatlinburg, Tennessee.",
-#   num_beds: 2,
-#   num_bedrooms: 1,
-#   number_bathrooms: 1,
-#   price: 130.0,
-#   has_ac: true,
-#   has_wifi: true,
-#   has_pets_allowed: true,
-#   has_washer_dryer: false,
-#   latitude: 35.7121,
-#   longitude: -83.5155
-# )
+listing7_photo_urls.each_with_index do |url, index|
+  listing7.photos.attach(
+    io: URI.open(url),
+    filename: "photo_#{index + 1}"
+  )
+end
 
-# # 12
-# listing12 = Listing.create!(
-#   host_id: 1,
-#   address: "333 Magnolia Drive, Portland, OR 97201",
-#   title: "Dragon's Lair Hideaway",
-#   description: "Discover the hidden dragon's lair in the mystical desert of Sedona, Arizona.",
-#   num_beds: 3,
-#   num_bedrooms: 2,
-#   number_bathrooms: 2,
-#   price: 210.0,
-#   has_ac: true,
-#   has_wifi: true,
-#   has_pets_allowed: false,
-#   has_washer_dryer: true,
-#   latitude: 34.8697,
-#   longitude: -111.7602
-# )
 
-# # 13
-# listing13 = Listing.create!(
-#   host_id: 1,
-#   address: "42 Merlin's Way",
-#   title: "Wizard's Tower with a Magic Library",
-#   description: "Stay in this wizard's tower and explore the vast collection of magical books in the library.",
-#   num_beds: 3,
-#   num_bedrooms: 2,
-#   number_bathrooms: 2,
-#   price: 180.0,
-#   has_ac: true,
-#   has_wifi: true,
-#   has_pets_allowed: false,
-#   has_washer_dryer: true,
-#   latitude: 45.5122,
-#   longitude: -122.6587
-# )
 
-# # 14
-# listing14 = Listing.create!(
-#   host_id: 1,
-#   address: '456 Elm Avenue, Los Angeles, CA 90001',
-#   title: 'Lakeview Retreat',
-#   description: 'Enjoy stunning lake views from this spacious lakeside villa.',
-#   num_beds: 4,
-#   num_bedrooms: 2,
-#   number_bathrooms: 2,
-#   price: 150.0,
-#   has_ac: true,
-#   has_wifi: true,
-#   has_pets_allowed: true,
-#   has_washer_dryer: true,
-#   latitude: 34.0522,
-#   longitude: -118.2437
-# )
+# 8
+listing8 = Listing.create!(
+  host_id: 2,
+  address: "42 Merlin's Way",
+  title: "Wizard's Tower with a Magic Library",
+  description: "Welcome to my venerable Wizard's Tower, a sanctuary of arcane wisdom and ancient enchantments. Ascend the spiraling staircases, and you'll find yourself amidst a trove of mystic knowledge and ethereal wonders. The walls, adorned with shimmering scrolls and starlit charts, whisper secrets of the cosmos. Gaze out the crystal windows, and you'll witness the dance of constellations, each one a tale of cosmic destiny. In the heart of the tower, an observatory reveals the very fabric of the universe, and the library contains tomes that hold answers to questions unasked. (Its larger on the inside...)",
+  num_beds: 999999,
+  num_bedrooms: 999999,
+  number_bathrooms: 999999,
+  price: 450.0,
+  has_ac: true,
+  has_wifi: true,
+  has_pets_allowed: true,
+  has_washer_dryer: true,
+  latitude: 45.5122,
+  longitude: -122.6587
+)
 
-# # 15
-# listing15 = Listing.create!(
-#   host_id: 1,
-#   address: "123 Dragonfly Lane",
-#   title: "Dragon Keep with Friendly Fire-breathing Dragon",
-#   description: "Experience a unique adventure in this castle guarded by a dragon with a heart of gold.",
-#   num_beds: 5,
-#   num_bedrooms: 4,
-#   number_bathrooms: 3,
-#   price: 250.0,
-#   has_ac: true,
-#   has_wifi: true,
-#   has_pets_allowed: true,
-#   has_washer_dryer: true,
-#   latitude: 37.7749,
-#   longitude: -122.4194
-# )
+listing8_photo_urls = [
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/WizardTower/WizardTower1.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/WizardTower/WizardTower3.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/WizardTower/WizardTower4.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/WizardTower/WizardTower5.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/WizardTower/WizardTower2.webp"
+]
 
-# # 16
-# listing16 = Listing.create!(
-#   host_id: 1,
-#   address: "456 Enchanted Avenue",
-#   title: "Mystical Cottage in the Enchanted Forest",
-#   description: "Escape to this charming cottage nestled deep within the enchanted forest. Keep an eye out for fairies!",
-#   num_beds: 2,
-#   num_bedrooms: 1,
-#   number_bathrooms: 1,
-#   price: 90.0,
-#   has_ac: false,
-#   has_wifi: true,
-#   has_pets_allowed: true,
-#   has_washer_dryer: false,
-#   latitude: 41.8781,
-#   longitude: -87.6298
-# )
+listing8_photo_urls.each_with_index do |url, index|
+  listing8.photos.attach(
+    io: URI.open(url),
+    filename: "photo_#{index + 1}"
+  )
+end
 
-# # 17
-# listing17 = Listing.create!(
-#   host_id: 1,
-#   address: "789 Wizardry Lane",
-#   title: "Magician's Retreat with Floating Carpets",
-#   description: "Stay in this magical retreat and enjoy the luxury of floating carpets that take you wherever you desire.",
-#   num_beds: 3,
-#   num_bedrooms: 2,
-#   number_bathrooms: 2,
-#   price: 160.0,
-#   has_ac: true,
-#   has_wifi: true,
-#   has_pets_allowed: false,
-#   has_washer_dryer: true,
-#   latitude: 51.5074,
-#   longitude: -0.1278
-# )
+#9
+listing9 = Listing.create!(
+  host_id: 7,
+  address: "123 Magma Avenue, Volcano City, VC 98765",
+  title: "Volcano View Retreat",
+  description: "Escape to the fiery heart of nature and witness the majestic power of a real volcano up close. The 'Volcano View Retreat' offers you a once-in-a-lifetime opportunity to experience the thrill of living on the edge of a live volcano. Feel the rumble, see the sparks, and embrace the heat as you stay in this unique and adventurous location. (Please note: Lava flows and eruptions are part of the natural charm of this retreat.)",
+  num_beds: 5,
+  num_bedrooms: 2,
+  number_bathrooms: 2,
+  price: 99.99,
+  has_ac: false,
+  has_wifi: true,
+  has_pets_allowed: true,
+  has_washer_dryer: false,
+  latitude: 25.9876,
+  longitude: -90.1234
+)
 
-# # 18
-# listing18 = Listing.create!(
-#   host_id: 1,
-#   address: "123 Wizard's Alley",
-#   title: "Quaint Wizard's Cottage",
-#   description: "Experience the whimsy of a wizard's life in this quaint cottage filled with magical artifacts and potions.",
-#   num_beds: 2,
-#   num_bedrooms: 1,
-#   number_bathrooms: 1,
-#   price: 120.0,
-#   has_ac: true,
-#   has_wifi: true,
-#   has_pets_allowed: true,
-#   has_washer_dryer: false,
-#   latitude: 37.7749,
-#   longitude: -122.4194
-# )
+listing9_photo_urls = [
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/Volcano/Volcano1.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/Volcano/Volcano3.webp",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/Volcano/Volcano2.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/Volcano/Volcano5.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/Volcano/Volcano4.jpeg"
+]
+
+listing9_photo_urls.each_with_index do |url, index|
+  listing9.photos.attach(
+    io: URI.open(url),
+    filename: "photo_#{index + 1}"
+  )
+end
+
+#10
+listing10 = Listing.create!(
+  host_id: 7,
+  address: "42 Frosty Way, Arctic Village, AV 54321",
+  title: "Arctic Tundra Getaway",
+  description: "Experience the breathtaking beauty of the Arctic tundra in our cozy 'Arctic Tundra Getaway.' Nestled amidst a pristine frozen landscape, this retreat offers you a chance to witness the mesmerizing Northern Lights, explore icy landscapes, and observe unique Arctic wildlife. Embrace the serenity and stillness of this remote location.",
+  num_beds: 7,
+  num_bedrooms: 1,
+  number_bathrooms: 1,
+  price: 79.99,
+  has_ac: false,
+  has_wifi: true,
+  has_pets_allowed: true,
+  has_washer_dryer: true,
+  latitude: 70.9876,
+  longitude: -160.1234
+)
+
+listing10_photo_urls = [
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/ArcticTundra/ArcticTundra1.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/ArcticTundra/ArcticTundra4.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/ArcticTundra/ArcticTundra5.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/ArcticTundra/ArcticTundra2.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/ArcticTundra/ArcticTundra3.jpeg"
+]
+
+listing10_photo_urls.each_with_index do |url, index|
+  listing10.photos.attach(
+    io: URI.open(url),
+    filename: "photo_#{index + 1}"
+  )
+end
+
+#11
+listing11 = Listing.create!(
+  host_id: 7,
+  address: "9 Riches Road, Gemstone Valley, GV 45678",
+  title: "The Treasure Hunter's Inn",
+  description: "Embark on a quest for riches and adventure at 'The Treasure Hunter's Inn.' This rustic inn is a gathering place for daring explorers seeking hidden treasures, ancient relics, and legendary artifacts. Explore labyrinthine caves, decipher cryptic maps, and bask in the camaraderie of fellow treasure hunters. (Beware of traps and puzzles along the way!)",
+  num_beds: 36,
+  num_bedrooms: 18,
+  number_bathrooms: 18,
+  price: 5149.99,
+  has_ac: true,
+  has_wifi: true,
+  has_pets_allowed: false,
+  has_washer_dryer: true,
+  latitude: 35.1234,
+  longitude: -110.7890
+)
+
+listing11_photo_urls = [
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/TreasureHunterInn/TreasureHunterInn1.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/TreasureHunterInn/TreasureHunterInn2.webp",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/TreasureHunterInn/TreasureHunterInn5.avif",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/TreasureHunterInn/TreasureHunterInn3.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/TreasureHunterInn/TreasureHunterInn4.jpeg"
+]
+
+listing11_photo_urls.each_with_index do |url, index|
+  listing11.photos.attach(
+    io: URI.open(url),
+    filename: "photo_#{index + 1}"
+  )
+end
+
+listing12 = Listing.create!(
+  host_id: 2,
+  address: "123 Mirage Lane, Sand Dune Oasis, SD 98765",
+  title: "Elemental Mage's Oasis",
+  description: "Discover the secrets of elemental magic amidst the endless sands at the 'Elemental Mage's Oasis.' This mystical desert retreat is a sanctuary of elemental mastery, where you can learn the ancient arts of fire, earth, air, and water magic. Immerse yourself in the desert's tranquility and harness the power of the elements",
+  num_beds: 4,
+  num_bedrooms: 2,
+  number_bathrooms: 1,
+  price: 129.99,
+  has_ac: false,
+  has_wifi: true,
+  has_pets_allowed: true,
+  has_washer_dryer: false,
+  latitude: 29.5678,
+  longitude: -105.4321
+)
+
+listing12_photo_urls = [
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/MageOasis/MageOasis1.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/MageOasis/MageOasis2.webp",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/MageOasis/MageOasis5.webp",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/MageOasis/MageOasis3.jpeg",
+  "https://airdnd-fullstack-prj-seeds.s3.amazonaws.com/MageOasis/MageOasis4.jpeg"
+]
+
+listing12_photo_urls.each_with_index do |url, index|
+  listing12.photos.attach(
+    io: URI.open(url),
+    filename: "photo_#{index + 1}"
+  )
+end
 
 puts "Done!"
