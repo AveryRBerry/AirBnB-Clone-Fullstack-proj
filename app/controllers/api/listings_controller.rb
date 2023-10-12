@@ -3,7 +3,6 @@ class Api::ListingsController < ApplicationController
     # wrap_parameters include: Listing.attribute_names
     # before_action :set_listing, only: [:show, :update, :destroy]
 
-
     def create
         @listing = Listing.new(listing_params)
 
@@ -44,23 +43,15 @@ class Api::ListingsController < ApplicationController
         query = params[:query]
 
         @listings = Listing.where('title ILIKE ?', "%#{query}%")
-# //OR city       ,%#{query}%
         render :search
     end
 
     private
 
-    # not sure if needed
-    # def set_listing
-    #     @listing = Listing.find(params[:id])
-    # rescue
-    #     render json: ['Listing not found'], status: :not_found
-    # end
-
     def listing_params
         params.require(:listings).permit(
             :host_id,
-            :host_id	, 
+            :host_id, 
             :address, 
             :title,
             :description,

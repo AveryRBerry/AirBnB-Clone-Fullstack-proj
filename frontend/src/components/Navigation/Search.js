@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { fetchSearchResults } from '../../store/search'
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import ListingIndex from '../Listings/ListingIndex';
 
@@ -16,18 +16,25 @@ const Search = () => {
     const noResults = Object.keys(searchResults).length === 0;
 
     
+
+
+    const [cachedSearchResults, setCachedSearchResults] = useState({});
     useEffect(() => {
         if (query) {
             dispatch(fetchSearchResults(query));
         }
+        setCachedSearchResults(searchResults);
     }, [query,dispatch]);
+
+
+
 
     return(
         <>
             {noResults && 
                 <div id='results-for'>No results containing "{query}"</div>
             }
-            <ListingIndex searchResults={Object.values({...searchResults, 999: {id: 'host'}})}/>
+            <ListingIndex searchResults={Object.values({...cachedSearchResults, 999: {id: 'host'}})}/>
         </>
     );
 }
