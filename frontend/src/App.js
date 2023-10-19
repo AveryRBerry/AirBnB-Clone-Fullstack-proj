@@ -5,6 +5,7 @@ import ListingIndex from './components/Listings/ListingIndex';
 import ListingShow from './components/Listings/ListingShow'
 import Footer from './components/Navigation/Footer'
 import Search from './components/Navigation/Search'
+import ReservationIndex from './components/Reservations/Reservations'
 
 
 
@@ -18,6 +19,7 @@ function App() {
         </Route>
         <Route exact path="/" component={ListingIndex} />
         <Route exact path="/listings/:listingId" component={ListingShow} />
+        <Route exact path="/reservations" component={ReservationIndex} />
       </Switch>
       <Footer/>
     </>

@@ -11,7 +11,7 @@ class Api::ReservationsController < ApplicationController
     end
 
     def index
-        @reservations = Reservation.all
+        @reservations = current_user.reservations
         render :index
     end
 

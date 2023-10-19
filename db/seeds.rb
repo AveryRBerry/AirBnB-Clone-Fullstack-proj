@@ -2,13 +2,15 @@ require "open-uri"
 
 ApplicationRecord.transaction do 
   puts "Destroying tables..."
-  Listing.destroy_all
   User.destroy_all
+  Listing.destroy_all
+  Reservation.destroy_all
 
 
   puts "Resetting primary keys..."
   ApplicationRecord.connection.reset_pk_sequence!('users')
   ApplicationRecord.connection.reset_pk_sequence!('listings')
+  ApplicationRecord.connection.reset_pk_sequence!('reservations')
 end
 
 puts "Creating users..."
@@ -68,6 +70,7 @@ User.create!(
   last_name: 'Mays',
   first_name: 'Billy'
 )
+
 
 puts "Creating listings..."
 
@@ -468,5 +471,118 @@ listing12_photo_urls.each_with_index do |url, index|
     filename: "photo_#{index + 1}"
   )
 end
+
+
+puts "Creating past reservation data foor demo_user..."
+demo_user = User.find_by(email: 'demo@user.io')
+
+if demo_user
+  listing1 = Listing.find(1)  # Assuming you have a listing with ID 1
+  listing2 = Listing.find(2)  # Assuming you have a listing with ID 2
+  listing3 = Listing.find(3)
+  listing4 = Listing.find(4)
+
+  if listing1 && listing2 && listing3 && listing4
+
+    Reservation.create!(
+      listing_id: listing1.id,  # Replace with the actual listing ID
+      guest_id: demo_user.id,
+      num_guests: 2,  # You can adjust the number of guests as needed
+      total_price: (5 * listing1.price),  # You can adjust the price as needed
+      start_date: '2021-01-06',
+      end_date: '2021-01-10'
+    )
+
+    Reservation.create!(
+      listing_id: listing2.id,  # Replace with the actual listing ID
+      guest_id: demo_user.id,
+      num_guests: 3,  # You can adjust the number of guests as needed
+      total_price: (6 * listing2.price),  # You can adjust the price as needed
+      start_date: '2021-03-15',
+      end_date: '2021-03-20'
+    )
+
+    Reservation.create!(
+      listing_id: listing3.id,  # Replace with the actual listing ID
+      guest_id: demo_user.id,
+      num_guests: 4,  # You can adjust the number of guests as needed
+      total_price: (7 * listing3.price),  # You can adjust the price as needed
+      start_date: '2021-05-24',
+      end_date: '2021-05-30'
+    )
+
+    Reservation.create!(
+      listing_id: listing4.id,
+      guest_id: demo_user.id,
+      num_guests: 2,  # You can adjust the number of guests as needed
+      total_price: (4 * listing4.price),
+      start_date: '2021-07-08',
+      end_date: '2021-07-15',
+    )
+
+  else
+    puts "One or more listings do not exist in the database. Please ensure all required listings are available."
+  end
+
+else
+  puts "Demo user not found. Make sure the user with email 'demo@user.io' exists in your database."
+end
+
+
+puts "Creating past reservation data foor demo_user2 (wiz)..."
+demo_user2 = User.find_by(email: 'demo@user2.io')
+
+if demo_user2
+  listing5 = Listing.find(5)  # Assuming you have a listing with ID 1
+  listing6 = Listing.find(6)  # Assuming you have a listing with ID 2
+  listing7 = Listing.find(7)
+  listing8 = Listing.find(8)
+
+  if listing5 && listing6 && listing7 && listing8
+
+    Reservation.create!(
+      listing_id: listing5.id,  # Replace with the actual listing ID
+      guest_id: demo_user2.id,
+      num_guests: 2,  # You can adjust the number of guests as needed
+      total_price: (5 * listing5.price),  # You can adjust the price as needed
+      start_date: '2021-01-06',
+      end_date: '2021-01-10'
+    )
+
+    Reservation.create!(
+      listing_id: listing6.id,  # Replace with the actual listing ID
+      guest_id: demo_user2.id,
+      num_guests: 3,  # You can adjust the number of guests as needed
+      total_price: (6 * listing6.price),  # You can adjust the price as needed
+      start_date: '2021-03-15',
+      end_date: '2021-03-20'
+    )
+
+    Reservation.create!(
+      listing_id: listing7.id,  # Replace with the actual listing ID
+      guest_id: demo_user2.id,
+      num_guests: 4,  # You can adjust the number of guests as needed
+      total_price: (7 * listing7.price),  # You can adjust the price as needed
+      start_date: '2021-05-24',
+      end_date: '2021-05-30'
+    )
+
+    Reservation.create!(
+      listing_id: listing8.id,
+      guest_id: demo_user2.id,
+      num_guests: 2,  # You can adjust the number of guests as needed
+      total_price: (4 * listing8.price),
+      start_date: '2021-07-08',
+      end_date: '2021-07-15',
+    )
+
+  else
+    puts "One or more listings do not exist in the database. Please ensure all required listings are available."
+  end
+
+else
+  puts "Demo user not found. Make sure the user with email 'demo@user.io' exists in your database."
+end
+
 
 puts "Done!"

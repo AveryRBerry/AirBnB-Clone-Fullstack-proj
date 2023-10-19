@@ -11,6 +11,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
 
   has_many :listings, foreign_key: :host_id
+  has_many :reservations, foreign_key: 'guest_id'
   
   before_validation :ensure_session_token
 
