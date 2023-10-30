@@ -20,6 +20,7 @@ export const fetchSearchResults = (query) => async dispatch => {
     const data = await res.json();
 
     dispatch(receiveSearchResults(data, query));
+    
 }
 
 const  searchReducer = (state = {}, action) => {
@@ -27,7 +28,7 @@ const  searchReducer = (state = {}, action) => {
 
     switch (action.type) {
         case GET_SEARCH_RESULTS:
-            if (action.query !== lastSearchQuery) {
+            if (action.query === lastSearchQuery) {
                 return {...action.searchResults.listings}
             }
             return newState;
