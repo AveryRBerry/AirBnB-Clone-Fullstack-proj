@@ -31,7 +31,8 @@ export const getReservation = reservationId => {
 }
 
 export const getReservations = state => {
-    if (state.reservations) return Object.values(state.reservations);
+    // console.log(state.reservations)
+    if (state.reservations) return state.reservations;
     return [];
 }
 
@@ -94,12 +95,44 @@ export const deleteReservation = reservationId => async dispatch => {
     }
 }
 
-const reservationsReducer = (state = {}, action) => {
+
+const initialState = {
+    currentReservations: [],
+    upcomingReservations: [],
+    pastReservations: [],
+};
+
+const reservationsReducer = (state = initialState, action) => {
     const nextState = {...state}
 
     switch (action.type) {
         case RECEIVE_RESERVATIONS:
-            return { ...action.reservations };
+        const currentDate = new Date();
+        const currentReservations = [];
+        const upcomingReservations = [];
+        const pastReservations = [];
+
+        // console.log("**********************", Object.values(action.reservations))
+
+        Object.values(action.reservations).forEach((reservation) => {
+            const startDate = new Date(reservation.startDate);
+            const endDate = new Date(reservation.endDate);
+            // debugger
+
+            if (endDate < currentDate) {
+                pastReservations.push(reservation);
+            } else if (startDate <= currentDate && endDate >= currentDate) {
+                currentReservations.push(reservation);
+            } else {
+                upcomingReservations.push(reservation);
+            }
+        })
+            return {...state,
+                    currentReservations,
+                    upcomingReservations,
+                    pastReservations
+                    };
+
         case RECEIVE_RESERVATION:
             // debugger
             nextState[action.data.reservation.id] = action.data.reservation;

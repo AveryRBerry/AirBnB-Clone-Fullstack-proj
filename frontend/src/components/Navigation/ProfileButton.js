@@ -8,6 +8,7 @@ import './ProfileButton.css'
 import { Modal } from '../../context/Modal';
 import LoginForm from "../LoginFormModal/LoginForm"
 import { useRef, useEffect } from 'react';
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
 function ProfileButton({ user }) {
@@ -17,6 +18,7 @@ function ProfileButton({ user }) {
   const [showMenu, setShowMenu] = useState(false);
   const [LoginshowModal, setLoginShowModal] = useState(false);
   const [SignUpshowModal, setSignUpShowModal] = useState(false);
+  const history = useHistory();
   
   const openMenu = () => {
     setShowMenu(!showMenu);
@@ -38,6 +40,7 @@ function ProfileButton({ user }) {
     openMenu();
     setLoginShowModal(false) ;
     setSignUpShowModal(false);
+    history.push("/")
   };
 
 

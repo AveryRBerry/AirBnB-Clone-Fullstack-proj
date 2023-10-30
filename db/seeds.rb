@@ -481,9 +481,54 @@ if demo_user
   listing2 = Listing.find(2)  # Assuming you have a listing with ID 2
   listing3 = Listing.find(3)
   listing4 = Listing.find(4)
+  listing5 = Listing.find(5)  # Assuming you have a listing with ID 1
+  listing6 = Listing.find(6)  # Assuming you have a listing with ID 2
+  listing7 = Listing.find(7)
+  listing8 = Listing.find(8)
 
-  if listing1 && listing2 && listing3 && listing4
+  if listing1 && listing2 && listing3 && listing4 && listing5 && listing6 && listing7 && listing8
 
+    # Current trips
+    Reservation.create!(
+      listing_id: listing5.id,  # Replace with the actual listing ID
+      guest_id: demo_user.id,
+      num_guests: 2,  # You can adjust the number of guests as needed
+      total_price: (5 * listing5.price),  # You can adjust the price as needed
+      start_date: '2022-01-06',
+      end_date: '2030-01-10'
+    )
+
+    Reservation.create!(
+      listing_id: listing6.id,  # Replace with the actual listing ID
+      guest_id: demo_user.id,
+      num_guests: 2,  # You can adjust the number of guests as needed
+      total_price: (5 * listing6.price),  # You can adjust the price as needed
+      start_date: '2022-01-06',
+      end_date: '2030-01-10'
+    )
+
+
+    # Up comming trips
+    Reservation.create!(
+      listing_id: listing7.id,  # Replace with the actual listing ID
+      guest_id: demo_user.id,
+      num_guests: 2,  # You can adjust the number of guests as needed
+      total_price: (5 * listing7.price),  # You can adjust the price as needed
+      start_date: '2030-01-06',
+      end_date: '2031-01-10'
+    )
+
+    Reservation.create!(
+      listing_id: listing8.id,  # Replace with the actual listing ID
+      guest_id: demo_user.id,
+      num_guests: 2,  # You can adjust the number of guests as needed
+      total_price: (5 * listing8.price),  # You can adjust the price as needed
+      start_date: '2030-01-06',
+      end_date: '2031-01-10'
+    )
+
+
+    # Past trips
     Reservation.create!(
       listing_id: listing1.id,  # Replace with the actual listing ID
       guest_id: demo_user.id,

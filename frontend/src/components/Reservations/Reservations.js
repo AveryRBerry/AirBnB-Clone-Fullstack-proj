@@ -5,17 +5,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchReservations, getReservations } from '../../store/reservations';
 import { useEffect } from 'react';
 import ReservationIndexItem from './ReservationIndexItem'
-import ListingIndexItem from '../Listings/ListingIndexItem';
-
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const ReservationIndex = () => {
     const reservations = useSelector(getReservations);
+    const history =useHistory()
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(fetchReservations());
     }, [dispatch]);
+
+    const handleStartSearchingClick = () => {
+        history.push("/")
+    }
 
 // console.log(reservations)
 
@@ -35,7 +39,7 @@ const ReservationIndex = () => {
                 <div>Hi ..., welcome back!</div>
                 <div id='trips-booked-text'>No trips booked...yet!</div>
                 <div id='dust-off-msg-text'>Time to dust off your bags and start planning your next adventure</div>
-                <button id='return-to-listings-index-button'>Start searching</button>
+                <button onClick={handleStartSearchingClick} id='return-to-listings-index-button'>Start searching</button>
             </div>
             <img src={greatingimg} alt="Greeting img" id="reservation-greeting-img" />
         </div>
@@ -43,17 +47,27 @@ const ReservationIndex = () => {
         <div id='separator-reservation-page'></div>
         <div id='current-trips-text'>Your current trips</div>
 
+        <ul id='reservationsIndexPage'>
+            {reservations.currentReservations.map(reservation => {
+                return <ReservationIndexItem key={reservation.listing.id} listing={reservation.listing} reservation={reservation} typeOfReservation='current' />
+            })}
+        </ul>
+
         <div id='separator-reservation-page'></div>
         <div id='current-trips-text'>Where you're going next!</div>
+
+        <ul id='reservationsIndexPage'>
+            {reservations.upcomingReservations.map(reservation => {
+                return <ReservationIndexItem key={reservation.listing.id} listing={reservation.listing} reservation={reservation} typeOfReservation='upcoming' />
+            })}
+        </ul>
 
         <div id='separator-reservation-page'></div>
         <div id='current-trips-text'>Where you've been</div>
 
         <ul id='reservationsIndexPage'>
-            {reservations.map(reservation => {
-                // console.log(reservation.listing)
-                // return <ReservationIndexItem key={reservation.id} reservation={reservation} />
-                return <ListingIndexItem key={reservation.listing.id} listing={reservation.listing} />
+            {reservations.pastReservations.map(reservation => {
+                return <ReservationIndexItem key={reservation.listing.id} listing={reservation.listing} reservation={reservation} typeOfReservation='past' />
             })}
         </ul>
 
