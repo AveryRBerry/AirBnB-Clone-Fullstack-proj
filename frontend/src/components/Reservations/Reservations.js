@@ -21,11 +21,7 @@ const ReservationIndex = () => {
         history.push("/")
     }
 
-// console.log(reservations)
-
-
-
-
+    
     return (
         <div id='reservations-content-container'>
 
@@ -49,7 +45,7 @@ const ReservationIndex = () => {
 
         <ul id='reservationsIndexPage'>
             {reservations.currentReservations.map(reservation => {
-                return <ReservationIndexItem key={reservation.listing.id} listing={reservation.listing} reservation={reservation} typeOfReservation='current' />
+                return <ReservationIndexItem key={reservation.listing.id} listing={reservation.listing} reservation={reservation} />
             })}
         </ul>
 
@@ -58,7 +54,7 @@ const ReservationIndex = () => {
 
         <ul id='reservationsIndexPage'>
             {reservations.upcomingReservations.map(reservation => {
-                return <ReservationIndexItem key={reservation.listing.id} listing={reservation.listing} reservation={reservation} typeOfReservation='upcoming' />
+                return <ReservationIndexItem key={reservation.listing.id} listing={reservation.listing} reservation={reservation} />
             })}
         </ul>
 
@@ -67,7 +63,7 @@ const ReservationIndex = () => {
 
         <ul id='reservationsIndexPage'>
             {reservations.pastReservations.map(reservation => {
-                return <ReservationIndexItem key={reservation.listing.id} listing={reservation.listing} reservation={reservation} typeOfReservation='past' />
+                return <ReservationIndexItem key={reservation.listing.id} listing={reservation.listing} reservation={reservation} />
             })}
         </ul>
 

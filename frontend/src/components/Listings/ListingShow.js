@@ -1,9 +1,12 @@
-import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getListing, fetchListing} from '../../store/listings';
 import './ListingShow.css'
 import { getUser } from '../../store/users'
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { createReservation } from '../../store/reservations'
 
 
 
@@ -12,18 +15,55 @@ const ListingShow = () => {
 
     const {listingId} = useParams();
     const listing = useSelector(getListing(listingId));
-    const user = useSelector(getUser(listing?.hostId));
-
+    const host = useSelector(getUser(listing?.hostId));
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
+    const [numGuests, setNumGuests] = useState(0);
+    const user = useSelector(state => state.session.user);
     const dispatch = useDispatch();
+    const history = useHistory();
+
 
     useEffect(() => {
         dispatch(fetchListing(listingId));
     }, [listingId, dispatch]);
 
-    if (!listing || !user ) return null
+    function CustomDatePickerInput({ value, onClick, side }) {
+    return (
+        <input
+        type="text"
+        value={value}
+        onClick={onClick}
+        readOnly
+        placeholder="Select Date"
+        className={side}
+        />
+    );
+    }
 
-    // console.log(listing)
-    
+    const calculateTotalPrice = () => {
+        return listing.price * Math.floor((endDate.getTime() - startDate.getTime())/86400000 + 1)
+    }
+
+    const handleReserveSubmit = (e) => {
+        e.preventDefault();
+        if (startDate && endDate && numGuests){
+
+            const reservationData = {
+            listing_id: listingId,
+            guest_id: user.id,
+            num_guests: numGuests,
+            total_price: calculateTotalPrice(startDate, endDate),
+            start_date: startDate.toISOString(),
+            end_date: endDate.toISOString(),
+            };
+            dispatch(createReservation(reservationData))
+            history.push('/reservations')
+        }
+    }
+
+    if (!listing || !host ) return null
+
     return (
         <>
             <div id='showContainer'>
@@ -36,13 +76,12 @@ const ListingShow = () => {
                         <img id='smallShowImg' src={listing.photos[2].photoUrl} alt='Listing img' />
                         <img id='smallShowImg' src={listing.photos[3].photoUrl} alt='Listing img' />
                         <img id='smallShowImg' src={listing.photos[4].photoUrl} alt='Listing img' />
-
                     </div>
                 </div>
 
                 <div id='firstHalfShowInformationBox'>
                     <div id='listingInformation'>
-                        <div id='hostedByUsername'>Hosted by {user.firstName} {user.lastName}</div>
+                        <div id='hostedByUsername'>Hosted by {host.firstName} {host.lastName}</div>
                         <div>{listing.numBedrooms} bedrooms : {listing.numBeds} beds : {listing.numberBathrooms} : baths</div>
                         <div id='showDescription'>{listing.description}</div>
                     </div>
@@ -51,12 +90,46 @@ const ListingShow = () => {
                             <div>${listing.price} night</div>
                             <div>Reviews...</div>
                         </div>
+                        {user && 
+                        <>
                         <div id='bookingFormDropDownButtonsContainer'>
-                            <button className='bookingFormDropDownButtons'>CHECK-IN</button>
-                            <button className='bookingFormDropDownButtons' >CHECKOUT</button>
+                            <DatePicker
+                                selected={startDate}
+                                onChange={date => setStartDate(date)}
+                                selectsStart
+                                startDate={startDate}
+                                endDate={endDate}
+                                customInput={<CustomDatePickerInput side='bookingFormDropDownButtons1' />}
+                                minDate={new Date()}
+                                maxDate={endDate}
+                            />
+                            <DatePicker
+                                selected={endDate}
+                                onChange={date => setEndDate(date)}
+                                selectsEnd
+                                startDate={startDate}
+                                endDate={endDate}
+                                customInput={<CustomDatePickerInput side='bookingFormDropDownButtons2' />}
+                                minDate={startDate ? startDate : new Date()}
+                            />
                         </div>
-                        <button className='bigBookingFormDropDownButton' >GUESTS</button>
-                        <button id='bigRedBookingReserveFormButton'>Reserve</button>
+                        <input 
+                            className='bigBookingFormDropDownButton'
+                            type="number"
+                            max={999}
+                            min={1}
+                            placeholder="Number of Guests"
+                            onChange={(e) => setNumGuests(e.target.value)}
+                        />
+                        <button onClick={handleReserveSubmit} id='bigRedBookingReserveFormButton'>Reserve</button>
+                        </>
+                        }
+                        {!user && 
+                        <>
+                        <button onClick={handleReserveSubmit} id='bigRedBookingReserveFormButton2'>Log In</button>
+                        <button onClick={handleReserveSubmit} id='bigRedBookingReserveFormButton'>Sign Up</button>
+                        </>
+                        }
                     </form>
                 </div>
                 <div>

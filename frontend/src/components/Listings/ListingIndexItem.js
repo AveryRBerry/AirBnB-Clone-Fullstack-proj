@@ -10,11 +10,10 @@ import 'font-awesome/css/font-awesome.min.css';
 
 const ListingIndexItem = ({ listing }) => {
 
-    // console.log("hi*************",listing)
 
     let images =[hobbitHouse1, hobbitHouse2, hobbitHouse3]
     if (listing.photos[0].photoUrl) images = [listing.photos[0].photoUrl, listing.photos[1].photoUrl, listing.photos[2].photoUrl, listing.photos[3].photoUrl, listing.photos[4].photoUrl]
-    // console.log('********')
+    // '********')
 
     const sliderSettings = {
         dots: false,
@@ -37,8 +36,6 @@ const ListingIndexItem = ({ listing }) => {
         slider.slickNext();
     };
 
-    // console.log('********hello???')
-    // console.log('********')
 
     let slider;
 

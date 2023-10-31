@@ -43,6 +43,14 @@ function ProfileButton({ user }) {
     history.push("/")
   };
 
+  const goToReservations = (e) => {
+    e.preventDefault();
+    openMenu();
+    setLoginShowModal(false) ;
+    setSignUpShowModal(false);
+    history.push("/reservations")
+  };
+
 
   const dropDownMenuRef = useRef(null);
   useEffect(() => {
@@ -72,6 +80,9 @@ function ProfileButton({ user }) {
             <li>
               <button onClick={logout} >
                 Log Out
+              </button>
+              <button onClick={goToReservations} >
+                Reservations
               </button>
             </li>
           </ul>

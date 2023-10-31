@@ -19,7 +19,6 @@ function Navigation() {
   const segments = currentPathway.split('/');
   const id = segments[segments.length - 1];
 
-  // console.log(id)
 
   if (id) {
     catagories = undefined

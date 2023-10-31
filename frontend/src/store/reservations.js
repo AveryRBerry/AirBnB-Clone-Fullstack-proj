@@ -1,3 +1,5 @@
+import csrfFetch from './csrf';
+
 export const RECEIVE_RESERVATIONS = 'reservations/RECEIVE_RESERVATIONS';
 export const RECEIVE_RESERVATION = 'reservations/RECEIVE_RESERVATION';
 export const REMOVE_RESERVATION = 'reservations/REMOVE_RESERVATION';
@@ -9,10 +11,10 @@ export const receiveReservations = reservations => {
     }
 };
 
-export const receiveReservation = data => {
+export const receiveReservation = reservation => {
     return {
         type: RECEIVE_RESERVATION,
-        data
+        reservation
     }
 };
 
@@ -31,7 +33,6 @@ export const getReservation = reservationId => {
 }
 
 export const getReservations = state => {
-    // console.log(state.reservations)
     if (state.reservations) return state.reservations;
     return [];
 }
@@ -54,12 +55,16 @@ export const fetchReservation = reservationId => async dispatch => {
     }
 }
 
+
+
 export const createReservation = reservation => async dispatch => {
-    const res = await fetch('api/reservations', {
+    // const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    const res = await fetch('/api/reservations', {
         method: 'POST',
         body: JSON.stringify(reservation),
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': sessionStorage.getItem("X-CSRF-Token"),
         }
     });
 
@@ -68,6 +73,32 @@ export const createReservation = reservation => async dispatch => {
         dispatch(receiveReservation(reservation));
     }
 }
+
+
+
+
+// export const createReservation = reservation => async dispatch => {
+//   // Your request URL and request options
+//   const url = '/api/reservations';
+//   const options = {
+//     method: 'POST',
+//     body: JSON.stringify(reservation),
+//   };
+
+//   // Use the csrfFetch function to make the request
+//   const res = await csrfFetch(url, options);
+
+//   if (res.ok) {
+//     const reservation = await res.json();
+//     dispatch(receiveReservation(reservation));
+//   }
+// };
+
+
+
+
+
+
 
 export const updateReservation = reservation => async dispatch => {
     const res = await fetch(`api/reservations/${reservation.id}`, {
@@ -112,12 +143,9 @@ const reservationsReducer = (state = initialState, action) => {
         const upcomingReservations = [];
         const pastReservations = [];
 
-        // console.log("**********************", Object.values(action.reservations))
-
         Object.values(action.reservations).forEach((reservation) => {
             const startDate = new Date(reservation.startDate);
             const endDate = new Date(reservation.endDate);
-            // debugger
 
             if (endDate < currentDate) {
                 pastReservations.push(reservation);
@@ -133,10 +161,10 @@ const reservationsReducer = (state = initialState, action) => {
                     pastReservations
                     };
 
-        case RECEIVE_RESERVATION:
-            // debugger
-            nextState[action.data.reservation.id] = action.data.reservation;
-            return nextState;
+        // case RECEIVE_RESERVATION:
+        //     // debugger
+        //     nextState[action.data.reservation.id] = action.data.reservation;
+        //     return nextState;
         case REMOVE_RESERVATION:
             delete nextState[action.reservationId];
             return nextState;

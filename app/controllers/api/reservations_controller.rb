@@ -4,7 +4,8 @@ class Api::ReservationsController < ApplicationController
         @reservation = Reservation.new(reservation_params)
 
         if @reservation.save
-            render :show
+            @reservations = current_user.reservations
+            render :index
         else
             render json: { errors: @reservation.errors.full_messages }, status: :unprocessable_entity
         end
@@ -40,7 +41,7 @@ class Api::ReservationsController < ApplicationController
     private
 
     def reservation_params
-        params.require(:reservations).permit(
+        params.require(:reservation).permit(
         :listing_id,
         :guest_id,
         :num_guests,

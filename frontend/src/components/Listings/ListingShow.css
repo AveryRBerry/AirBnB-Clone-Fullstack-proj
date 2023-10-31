@@ -157,7 +157,6 @@
     /* display: flex; */
     box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); 
     transition: box-shadow 0.2s ease;
-    cursor: pointer;
     border-radius: 10px;
     border: .5px solid #ccc;
     padding-bottom: 40px;
@@ -185,6 +184,7 @@
     height: 13%;
     /* border: 2px solid black; */
     justify-content: center;
+    
 }
 
 #bookingFormDropDownButtonsContainer button:first-child {
@@ -193,22 +193,30 @@
 
 #bookingFormDropDownButtonsContainer button:last-child {
     border-radius: 0px 15px 0px 0px;
+    
 }
 
-.bookingFormDropDownButtons {
-    width: 40%;
-    border: 1px solid rgba(128, 128, 128, 0.5);
-    background-color: white;
-    text-align: left;
-    font-size: 13px;
-    vertical-align: top;
+.bookingFormDropDownButtons1 {
+border-radius: 15px 0px 0px 0px;
+border: 1px solid rgb(158, 158, 158);
+height: 57px;
+width: 143px;
+font-size: 20px;
+}
+
+.bookingFormDropDownButtons2 {
+    border-radius: 0px 15px 0px 0px;
+    border: 1px solid rgb(158, 158, 158);
+    height: 57px;
+    width: 143px;
+    font-size: 20px;
 }
 
 .bigBookingFormDropDownButton {
     vertical-align: top;
     text-align: left;
-    font-size: 13px;
-    width: 19.7%;
+    font-size: 20px;
+    width: 292px;
     padding-top: 10px;
     padding-bottom: 30px;
     position: absolute;
@@ -216,6 +224,12 @@
     border: 1px solid rgba(128, 128, 128, 0.5);
     border-radius: 0px 0px 15px 15px;
     background-color: white;
+    text-indent: 20px;
+}
+
+.bigBookingFormDropDownButton::-webkit-inner-spin-button,
+.bigBookingFormDropDownButton::-webkit-outer-spin-button {
+    margin-right: 20px;
 }
 
 #bigRedBookingReserveFormButton {
@@ -230,4 +244,46 @@
     border-radius: 15px;
     background-color: rgb(255, 0, 89);
     color: white;
+    cursor: pointer;
 }
+
+#bigRedBookingReserveFormButton2 {
+    font-size: 20px;
+    width: 19.7%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    position: absolute;
+    right: 15.5%;
+    top: 100%;
+    border: 1px solid rgba(128, 128, 128, 0.5);
+    border-radius: 15px;
+    background-color: rgb(255, 0, 89);
+    color: white;
+    cursor: pointer;
+}
+
+
+
+
+
+
+/* #tempBookingFormNotLoggedIn {
+    margin-top: 50px;
+    display: absolute;
+    border: 1px solid #000;
+    width: 50%;
+    height: 460px;
+}
+
+#tempBookingFormNotLoggedIn {
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+    transition: box-shadow 0.2s ease;
+    border-radius: 10px;
+    border: .5px solid #ccc;
+    padding-bottom: 40px;
+    justify-content: center;
+}
+
+#tempBookingFormNotLoggedIn {
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
+} */

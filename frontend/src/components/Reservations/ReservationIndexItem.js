@@ -1,10 +1,25 @@
 import { Link } from 'react-router-dom';
 
-const ReservationIndexItem = ({listing, reservation, typeOfReservation}) => {
+function getReservationTime (reservation) {
+    const currentDate= new Date()
+
+    const startDate = new Date(reservation.startDate);
+    const endDate = new Date(reservation.endDate);
+    // debugger
+
+    if (endDate < currentDate) {
+        return 'past'
+    } else if (startDate <= currentDate && endDate >= currentDate) {
+        return 'current'
+    } else {
+        return 'upcoming'
+    }
+}
+
+const ReservationIndexItem = ({listing, reservation}) => {
     let image
     if (listing.photos[0].photoUrl) image = listing.photos[0].photoUrl
-    
-    // console.log("*",typeOfReservation, "*")
+    const typeOfReservation = getReservationTime(reservation)
 
     return (
         <Link className='reservationItem' to={`/listings/${listing.id}`} >
