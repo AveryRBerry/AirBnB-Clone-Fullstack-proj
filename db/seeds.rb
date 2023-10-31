@@ -2,15 +2,18 @@ require "open-uri"
 
 ApplicationRecord.transaction do 
   puts "Destroying tables..."
-  User.destroy_all
-  Listing.destroy_all
   Reservation.destroy_all
+  Listing.destroy_all
+  User.destroy_all
+  
+  
 
 
   puts "Resetting primary keys..."
-  ApplicationRecord.connection.reset_pk_sequence!('users')
-  ApplicationRecord.connection.reset_pk_sequence!('listings')
   ApplicationRecord.connection.reset_pk_sequence!('reservations')
+  ApplicationRecord.connection.reset_pk_sequence!('listings')
+  ApplicationRecord.connection.reset_pk_sequence!('users')
+  
 end
 
 puts "Creating users..."
