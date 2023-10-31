@@ -22,7 +22,25 @@ const Footer = () => {
     return (
         <div id={footer}>
         <div>© 2023 Airdnd, Inc.TermsSitemapPrivacyYour Privacy Choices </div>
-        <div>Socials......English (US) Choose a currency $USD</div>
+        <div className="social-media-list-footer">
+        <ul className="social-media-list">
+            <li>
+                <a href="https://www.linkedin.com/in/avery-berry-6a562a253/" target="_blank">
+                    <i id='socials-buttons' class="fab fa-linkedin"></i> 
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/AveryRBerry" target="_blank">
+                    <i id='socials-buttons' class="fab fa-github"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://averyrberry.github.io/Portfolio/" target="_blank">
+                    <i id='socials-buttons' class="fab fa-product-hunt"></i>
+                </a>
+            </li>
+        </ul>
+        English (US) Currency $USD</div>
         </div>
     )
 }

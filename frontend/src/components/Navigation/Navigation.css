@@ -131,3 +131,58 @@
     right: 40%;
 }
 
+
+
+.social-media-list {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    font-size: 35px;
+    right: 10%;
+}
+
+.social-media-list-footer {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+#top-profile-buttons {
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+#controlling-the-socials {
+    position: absolute;
+    right: 10%;
+}
+
+#controlling-the-socials2 {
+    position: absolute;
+    right: 17%;
+}
+
+#socials-buttons {
+    color: black;
+}
+
+
+#socials-buttons {
+    color: black;
+    transition: all 0.3s ease;
+    /* Add a transition for smooth animations */
+}
+
+#socials-buttons:hover {
+    transform: scale(1.1);
+    /* Expand the element on hover */
+    filter: brightness(1.2);
+    /* Make it glow brighter */
+}
+
+#socials-buttons:active {
+    transform: scale(0.9);
+    /* Sink in the element on click */
+    filter: brightness(0.8);
+    /* Make it less bright on click */
+}

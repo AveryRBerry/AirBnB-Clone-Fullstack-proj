@@ -15,6 +15,7 @@ function Navigation() {
 
   let catagories;
   let navBar;
+  let socials;
 
   const segments = currentPathway.split('/');
   const id = segments[segments.length - 1];
@@ -23,9 +24,12 @@ function Navigation() {
   if (id) {
     catagories = undefined
     navBar = 'showTopDisplayBar'
+    socials = 'controlling-the-socials2'
+
   } else {
     catagories = 'catagories'
     navBar = 'homeTopDisplayBar'
+    socials = 'controlling-the-socials'
   }
 
 
@@ -39,6 +43,26 @@ function Navigation() {
           </NavLink>
         </li>
         <NavSearch/>
+
+        <div id={socials}>
+        <ul className="social-media-list" id='top-profile-buttons'>
+            <li>
+                <a href="https://www.linkedin.com/in/avery-berry-6a562a253/" target="_blank">
+                    <i id='socials-buttons' class="fab fa-linkedin"></i> 
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/AveryRBerry" target="_blank">
+                    <i id='socials-buttons' class="fab fa-github"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://averyrberry.github.io/Portfolio/" target="_blank">
+                    <i id='socials-buttons' class="fab fa-product-hunt"></i>
+                </a>
+            </li>
+        </ul>
+        </div>
         <li>
           <ProfileButton user={sessionUser} />
         </li>
