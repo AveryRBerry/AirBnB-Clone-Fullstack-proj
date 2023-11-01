@@ -35,7 +35,7 @@ const ListingShow = () => {
         value={value}
         onClick={onClick}
         readOnly
-        placeholder="Select Date"
+        placeholder={(side === 'bookingFormDropDownButtons1') ? 'Start Date' : 'End Date'}
         className={side}
         />
     );

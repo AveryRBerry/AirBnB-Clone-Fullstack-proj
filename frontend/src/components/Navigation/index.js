@@ -48,17 +48,17 @@ function Navigation() {
         <ul className="social-media-list" id='top-profile-buttons'>
             <li>
                 <a href="https://www.linkedin.com/in/avery-berry-6a562a253/" target="_blank">
-                    <i id='socials-buttons' class="fab fa-linkedin"></i> 
+                    <i id='socials-buttons' className="fab fa-linkedin"></i> 
                 </a>
             </li>
             <li>
                 <a href="https://github.com/AveryRBerry" target="_blank">
-                    <i id='socials-buttons' class="fab fa-github"></i>
+                    <i id='socials-buttons' className="fab fa-github"></i>
                 </a>
             </li>
             <li>
                 <a href="https://averyrberry.github.io/Portfolio/" target="_blank">
-                    <i id='socials-buttons' class="fab fa-product-hunt"></i>
+                    <i id='socials-buttons' className="fab fa-product-hunt"></i>
                 </a>
             </li>
         </ul>

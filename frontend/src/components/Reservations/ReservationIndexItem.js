@@ -1,4 +1,8 @@
 import { Link } from 'react-router-dom';
+import { deleteReservation } from '../../store/reservations'
+import { useDispatch } from 'react-redux';
+import React, { useState } from "react";
+import DatePicker from 'react-datepicker';
 
 function getReservationTime (reservation) {
     const currentDate= new Date()
@@ -17,11 +21,128 @@ function getReservationTime (reservation) {
 }
 
 const ReservationIndexItem = ({listing, reservation}) => {
+
+    const dispatch = useDispatch()
     let image
     if (listing.photos[0].photoUrl) image = listing.photos[0].photoUrl
     const typeOfReservation = getReservationTime(reservation)
+    const [showInfoModal, setShowInfoModal] = useState(false);
+    const [startDate, setStartDate] = useState(new Date(reservation.startDate));
+    const [endDate, setEndDate] = useState(new Date(reservation.endDate));
+    const [numGuests, setNumGuests] = useState(reservation.numGuests);
+
+    console.log(reservation.startDate)
+
+
+    const handleDelete = (e) => {
+        e.preventDefault()
+        dispatch(deleteReservation(reservation.id))
+    }
+
+    // const handleUpdateReservation = () => {
+    // // Add logic to update the reservation here
+    // };
+
+    const toggleInfoModal = (e) => {
+        e.preventDefault()
+        setShowInfoModal(!showInfoModal);
+        setNumGuests(reservation.numGuests)
+        setEndDate(new Date(reservation.endDate))
+        setStartDate(new Date(reservation.startDate))
+    };
+
+
+
+
+
+    // const handleReserveSubmit = (e) => {
+    //     e.preventDefault();
+    //     if (startDate && endDate && numGuests){
+
+    //         const reservationData = {
+    //         listing_id: reservation.listing.listingId,
+    //         guest_id: user.id,
+    //         num_guests: numGuests,
+    //         total_price: calculateTotalPrice(startDate, endDate),
+    //         start_date: startDate.toISOString(),
+    //         end_date: endDate.toISOString(),
+    //         };
+    //         dispatch(createReservation(reservationData))
+    //     }
+    // }
+
+
+
+    
+
+    function CustomDatePickerInput({ value, onClick, side }) {
+    return (
+        <input
+        type="text"
+        value={value}
+        onClick={onClick}
+        readOnly
+        placeholder={(side === 'bookingFormDropDownButtons1update') ? 'Select Start Date' : 'Select End Date' }
+        className={side}
+        />
+    );
+    }
+
+    // console.log(reservation.listing.photos[0])
 
     return (
+        <>
+        {showInfoModal && (
+                <div id="info-modal">
+                    <div id="info-modal-content">
+                        <button id='info-modal-content-x-button' onClick={toggleInfoModal}>X</button>
+                        <div id='update-modal-divider'></div>
+                        <div id='listing-date-update-form'>From {reservation.startDate} to {reservation.endDate}</div>
+                        <div id='listing-title-update-form'>{reservation.listing.title}</div>
+                        <div id='listing-address-update-form'>{reservation.listing.address}</div>
+                        <div id='listing-guests-update-form'>Guests: {reservation.numGuests}</div>
+                        <img
+                            className='reservationItemImgUpdate'
+                            src={reservation.listing.photos[0].photoUrl}
+                            alt={reservation.listing.title}
+                        />
+                        <div id='calendar-update-container'>
+                            <DatePicker
+                                selected={startDate}
+                                onChange={date => setStartDate(date)}
+                                selectsStart
+                                startDate={startDate}
+                                endDate={endDate}
+                                customInput={<CustomDatePickerInput side='bookingFormDropDownButtons1update' />}
+                                minDate={new Date()}
+                                maxDate={endDate}
+                                open
+                                popperPlacement="bottom"
+                            />
+                            <DatePicker
+                                selected={endDate}
+                                onChange={date => setEndDate(date)}
+                                selectsEnd
+                                startDate={startDate}
+                                endDate={endDate}
+                                customInput={<CustomDatePickerInput side='bookingFormDropDownButtons2update' />}
+                                minDate={startDate ? startDate : new Date()}
+                                open
+                                popperPlacement="bottom"
+                            />
+                        </div>
+                        <input 
+                            className='bigBookingFormDropDownButtonUpdate'
+                            type="number"
+                            max={999}
+                            min={1}
+                            placeholder={`Number of Guests ${numGuests}`}
+                            onChange={(e) => setNumGuests(e.target.value)}
+                        />
+                        <button id='submit-update-reservation-button'>Update</button>
+                    </div>
+                </div>
+        )}
         <Link className='reservationItem' to={`/listings/${listing.id}`} >
                 <img
                     className='reservationItemImg'
@@ -40,8 +161,8 @@ const ReservationIndexItem = ({listing, reservation}) => {
 
                 {typeOfReservation === 'upcoming' && (
                     <>
-                        <button className='reservations-listing-buttons'>Update</button>
-                        <button className='reservations-listing-buttons'>Cancel</button>
+                        <button onClick={toggleInfoModal} className='reservations-listing-buttons'>Update</button>
+                        <button onClick={handleDelete} className='reservations-listing-buttons'>Cancel</button>
                     </>
                 )}
 
@@ -53,6 +174,7 @@ const ReservationIndexItem = ({listing, reservation}) => {
                 )}
             </ul>
         </Link>
+        </>
     )
 
     }

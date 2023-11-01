@@ -94,7 +94,7 @@ function SignUpForm() {
         </label>
         <ul className='listOfErrors'>
           
-          {errors.map((error) => <li key={error}><i class="fas fa-exclamation-circle" /> {error}</li>)}
+          {errors.map((error) => <li key={error}><i className="fas fa-exclamation-circle" /> {error}</li>)}
           
         </ul>
         <button className='formButton' type="submit">Continue</button>

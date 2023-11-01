@@ -32,7 +32,7 @@ const Search = () => {
     return(
         <>
             {noResults && 
-                <div id='results-for'>No results containing "{query}"</div>
+                <div id='no-search-results-found-text'><i className="far fa-frown"></i> No results containing "{query}"</div>
             }
             <ListingIndex searchResults={Object.values({...cachedSearchResults, 999: {id: 'host'}})}/>
         </>

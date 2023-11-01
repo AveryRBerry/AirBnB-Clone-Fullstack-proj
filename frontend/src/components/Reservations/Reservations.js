@@ -21,6 +21,7 @@ const ReservationIndex = () => {
         history.push("/")
     }
 
+
     
     return (
         <div id='reservations-content-container'>
@@ -44,6 +45,7 @@ const ReservationIndex = () => {
         <div id='current-trips-text'>Your current trips</div>
 
         <ul id='reservationsIndexPage'>
+            {!reservations.currentReservations[0] && <div id='empty-check-text-reservations'><i className="far fa-frown"></i> It's empty here ... nothing to see</div>}
             {reservations.currentReservations.map(reservation => {
                 return <ReservationIndexItem key={reservation.listing.id} listing={reservation.listing} reservation={reservation} />
             })}
@@ -53,6 +55,7 @@ const ReservationIndex = () => {
         <div id='current-trips-text'>Where you're going next!</div>
 
         <ul id='reservationsIndexPage'>
+            {!reservations.upcomingReservations[0] && <div id='empty-check-text-reservations'><i className="far fa-frown"></i> It's empty here ... nothing to see</div>}
             {reservations.upcomingReservations.map(reservation => {
                 return <ReservationIndexItem key={reservation.listing.id} listing={reservation.listing} reservation={reservation} />
             })}
@@ -62,6 +65,7 @@ const ReservationIndex = () => {
         <div id='current-trips-text'>Where you've been</div>
 
         <ul id='reservationsIndexPage'>
+            {!reservations.pastReservations[0] && <div id='empty-check-text-reservations'><i className="far fa-frown"></i> It's empty here ... nothing to see</div>}
             {reservations.pastReservations.map(reservation => {
                 return <ReservationIndexItem key={reservation.listing.id} listing={reservation.listing} reservation={reservation} />
             })}

@@ -117,7 +117,10 @@ export const updateReservation = reservation => async dispatch => {
 
 export const deleteReservation = reservationId => async dispatch => {
     const res = await fetch(`api/reservations/${reservationId}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+            'X-CSRF-Token': sessionStorage.getItem("X-CSRF-Token"),
+        }
     });
 
     if (res.ok) {
@@ -165,9 +168,9 @@ const reservationsReducer = (state = initialState, action) => {
         //     // debugger
         //     nextState[action.data.reservation.id] = action.data.reservation;
         //     return nextState;
-        case REMOVE_RESERVATION:
-            delete nextState[action.reservationId];
-            return nextState;
+        // case REMOVE_RESERVATION:
+        //     delete nextState[action.reservationId];
+        //     return nextState;
         default:
             return state;
     }

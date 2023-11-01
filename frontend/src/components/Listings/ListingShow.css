@@ -264,26 +264,3 @@ font-size: 20px;
 
 
 
-
-
-
-/* #tempBookingFormNotLoggedIn {
-    margin-top: 50px;
-    display: absolute;
-    border: 1px solid #000;
-    width: 50%;
-    height: 460px;
-}
-
-#tempBookingFormNotLoggedIn {
-    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
-    transition: box-shadow 0.2s ease;
-    border-radius: 10px;
-    border: .5px solid #ccc;
-    padding-bottom: 40px;
-    justify-content: center;
-}
-
-#tempBookingFormNotLoggedIn {
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
-} */

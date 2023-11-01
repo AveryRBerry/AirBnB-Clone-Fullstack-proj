@@ -31,8 +31,9 @@ class Api::ReservationsController < ApplicationController
     def destroy
         @reservation = Reservation.find_by(id: params[:id])
 
-        if @reservation.host_id == current_user.id
+        if @reservation.guest_id == current_user.id
             @reservation.destroy
+            @reservations = current_user.reservations
             render :index
         end
     end
