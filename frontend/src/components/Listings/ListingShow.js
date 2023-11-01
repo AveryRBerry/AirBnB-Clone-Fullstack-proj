@@ -33,6 +33,11 @@ const ListingShow = () => {
         dispatch(fetchListing(listingId));
     }, [listingId, dispatch]);
 
+    useEffect(() => {
+        setSignUpShowModal(false)
+        setLoginShowModal(false)
+    }, [user]);
+
     function CustomDatePickerInput({ value, onClick, side }) {
     return (
         <input
