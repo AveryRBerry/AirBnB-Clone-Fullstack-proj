@@ -105,7 +105,8 @@ export const updateReservation = reservation => async dispatch => {
         method: 'PATCH',
         body: JSON.stringify(reservation),
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': sessionStorage.getItem("X-CSRF-Token"),
         }
     });
 
@@ -137,40 +138,57 @@ const initialState = {
 };
 
 const reservationsReducer = (state = initialState, action) => {
-    const nextState = {...state}
+    const currentDate = new Date();
+    const currentReservations = [];
+    const upcomingReservations = [];
+    const pastReservations = [];
 
     switch (action.type) {
+
         case RECEIVE_RESERVATIONS:
-        const currentDate = new Date();
-        const currentReservations = [];
-        const upcomingReservations = [];
-        const pastReservations = [];
+            Object.values(action.reservations).forEach((reservation) => {
+                const startDate = new Date(reservation.startDate);
+                const endDate = new Date(reservation.endDate);
 
-        Object.values(action.reservations).forEach((reservation) => {
-            const startDate = new Date(reservation.startDate);
-            const endDate = new Date(reservation.endDate);
-
-            if (endDate < currentDate) {
-                pastReservations.push(reservation);
-            } else if (startDate <= currentDate && endDate >= currentDate) {
-                currentReservations.push(reservation);
-            } else {
-                upcomingReservations.push(reservation);
-            }
-        })
+                if (endDate < currentDate) {
+                    pastReservations.push(reservation);
+                } else if (startDate <= currentDate && endDate >= currentDate) {
+                    currentReservations.push(reservation);
+                } else {
+                    upcomingReservations.push(reservation);
+                }
+            })
             return {...state,
                     currentReservations,
                     upcomingReservations,
                     pastReservations
                     };
 
-        // case RECEIVE_RESERVATION:
-        //     // debugger
-        //     nextState[action.data.reservation.id] = action.data.reservation;
-        //     return nextState;
-        // case REMOVE_RESERVATION:
-        //     delete nextState[action.reservationId];
-        //     return nextState;
+        case RECEIVE_RESERVATION:
+            const updatedUpcomingReservations = state.upcomingReservations.map((reservation) => {
+                if (reservation.id === action.reservation.id) {
+                return action.reservation;
+                } else
+                return reservation;
+            });
+
+            return {
+                currentReservations: state.currentReservations,
+                upcomingReservations: updatedUpcomingReservations,
+                pastReservations: state.pastReservations
+            };
+
+        case REMOVE_RESERVATION:
+            const deleteUpcomingReservations = state.upcomingReservations.filter((reservation) => {
+                return reservation.id !== action.reservationId;
+            });
+            console.log(deleteUpcomingReservations)
+            return {
+                currentReservations: state.currentReservations,
+                upcomingReservations: deleteUpcomingReservations,
+                pastReservations: state.pastReservations
+            };
+
         default:
             return state;
     }

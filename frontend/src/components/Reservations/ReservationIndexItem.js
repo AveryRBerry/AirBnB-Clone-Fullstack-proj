@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 import { deleteReservation } from '../../store/reservations'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import React, { useState } from "react";
 import DatePicker from 'react-datepicker';
+import { updateReservation } from '../../store/reservations';
 
 function getReservationTime (reservation) {
     const currentDate= new Date()
@@ -30,8 +31,7 @@ const ReservationIndexItem = ({listing, reservation}) => {
     const [startDate, setStartDate] = useState(new Date(reservation.startDate));
     const [endDate, setEndDate] = useState(new Date(reservation.endDate));
     const [numGuests, setNumGuests] = useState(reservation.numGuests);
-
-    console.log(reservation.startDate)
+    const user = useSelector(state => state.session.user);
 
 
     const handleDelete = (e) => {
@@ -39,12 +39,9 @@ const ReservationIndexItem = ({listing, reservation}) => {
         dispatch(deleteReservation(reservation.id))
     }
 
-    // const handleUpdateReservation = () => {
-    // // Add logic to update the reservation here
-    // };
 
     const toggleInfoModal = (e) => {
-        e.preventDefault()
+        if (e) e.preventDefault()
         setShowInfoModal(!showInfoModal);
         setNumGuests(reservation.numGuests)
         setEndDate(new Date(reservation.endDate))
@@ -53,27 +50,31 @@ const ReservationIndexItem = ({listing, reservation}) => {
 
 
 
+    const calculateTotalPrice = () => {
+        return listing.price * Math.floor((endDate.getTime() - startDate.getTime())/86400000 + 1)
+    }
+
+    const handleReserveSubmit = (e) => {
+        e.preventDefault();
+        if (startDate && endDate && numGuests){
+
+            const reservationData = {
+            id: reservation.id,
+            listing_id: reservation.listing.listingId,
+            guest_id: user.id,
+            num_guests: numGuests,
+            total_price: calculateTotalPrice(startDate, endDate),
+            start_date: startDate.toISOString(),
+            end_date: endDate.toISOString(),
+            };
+            dispatch(updateReservation(reservationData))
+            toggleInfoModal()
+        }
+    }
 
 
-    // const handleReserveSubmit = (e) => {
-    //     e.preventDefault();
-    //     if (startDate && endDate && numGuests){
-
-    //         const reservationData = {
-    //         listing_id: reservation.listing.listingId,
-    //         guest_id: user.id,
-    //         num_guests: numGuests,
-    //         total_price: calculateTotalPrice(startDate, endDate),
-    //         start_date: startDate.toISOString(),
-    //         end_date: endDate.toISOString(),
-    //         };
-    //         dispatch(createReservation(reservationData))
-    //     }
-    // }
 
 
-
-    
 
     function CustomDatePickerInput({ value, onClick, side }) {
     return (
@@ -139,7 +140,7 @@ const ReservationIndexItem = ({listing, reservation}) => {
                             placeholder={`Number of Guests ${numGuests}`}
                             onChange={(e) => setNumGuests(e.target.value)}
                         />
-                        <button id='submit-update-reservation-button'>Update</button>
+                        <button onClick={handleReserveSubmit} id='submit-update-reservation-button'>Update</button>
                     </div>
                 </div>
         )}

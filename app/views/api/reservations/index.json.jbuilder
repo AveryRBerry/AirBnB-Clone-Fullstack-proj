@@ -27,13 +27,9 @@
                 :has_washer_dryer,
                 :latitude,
                 :longitude
-
             json.photos reservation.listing.photos do |photo|
                 json.photo_url url_for(photo)
             end
-
-    end
-
-
+        end
     end
 end

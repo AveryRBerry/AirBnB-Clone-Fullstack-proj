@@ -17,6 +17,10 @@ const ReservationIndex = () => {
         dispatch(fetchReservations());
     }, [dispatch]);
 
+    //     useEffect(() => {
+        
+    // }, [reservations.upcomingReservations]);
+
     const handleStartSearchingClick = () => {
         history.push("/")
     }
@@ -47,7 +51,7 @@ const ReservationIndex = () => {
         <ul id='reservationsIndexPage'>
             {!reservations.currentReservations[0] && <div id='empty-check-text-reservations'><i className="far fa-frown"></i> It's empty here ... nothing to see</div>}
             {reservations.currentReservations.map(reservation => {
-                return <ReservationIndexItem key={reservation.listing.id} listing={reservation.listing} reservation={reservation} />
+                return <ReservationIndexItem listing={reservation.listing} reservation={reservation} />
             })}
         </ul>
 
@@ -57,7 +61,8 @@ const ReservationIndex = () => {
         <ul id='reservationsIndexPage'>
             {!reservations.upcomingReservations[0] && <div id='empty-check-text-reservations'><i className="far fa-frown"></i> It's empty here ... nothing to see</div>}
             {reservations.upcomingReservations.map(reservation => {
-                return <ReservationIndexItem key={reservation.listing.id} listing={reservation.listing} reservation={reservation} />
+                // console.log('*******',reservations,'*******')
+                return <ReservationIndexItem  listing={reservation.listing} reservation={reservation} />
             })}
         </ul>
 
@@ -67,7 +72,7 @@ const ReservationIndex = () => {
         <ul id='reservationsIndexPage'>
             {!reservations.pastReservations[0] && <div id='empty-check-text-reservations'><i className="far fa-frown"></i> It's empty here ... nothing to see</div>}
             {reservations.pastReservations.map(reservation => {
-                return <ReservationIndexItem key={reservation.listing.id} listing={reservation.listing} reservation={reservation} />
+                return <ReservationIndexItem listing={reservation.listing} reservation={reservation} />
             })}
         </ul>
 

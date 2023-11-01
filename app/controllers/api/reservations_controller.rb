@@ -18,9 +18,11 @@ class Api::ReservationsController < ApplicationController
 
     def show
         @reservation = Reservation.find_by(id: params[:id])
+            render :show
     end
 
     def update
+        @reservation = Reservation.find_by(id: params[:id])
         if @reservation.update(reservation_params)
             render :show
         else
@@ -33,8 +35,7 @@ class Api::ReservationsController < ApplicationController
 
         if @reservation.guest_id == current_user.id
             @reservation.destroy
-            @reservations = current_user.reservations
-            render :index
+            render :show
         end
     end
 
