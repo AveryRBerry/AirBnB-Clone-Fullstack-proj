@@ -10,6 +10,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 const ReservationIndex = () => {
     const reservations = useSelector(getReservations);
     const history =useHistory()
+    const user = useSelector(state => state.session.user);
 
     const dispatch = useDispatch();
 
@@ -25,20 +26,20 @@ const ReservationIndex = () => {
         history.push("/")
     }
 
-
+    // console.log(user.email)
     
     return (
         <div id='reservations-content-container'>
 
 
         <div>Trips</div>
-        <div id='trips-taken-text'>You booked a total of ... trips so far!</div>
+        <div id='trips-taken-text'>You booked a total of {reservations.currentReservations.length + reservations.upcomingReservations.length + reservations.pastReservations.length} trips so far!</div>
 
         <div id='reservations-greeting-container'>
             <div id='greeting-msg-container'> 
                 <i id='icon-for-reservations-hello' className="fa-regular fa-hand-peace"></i>
-                <div>Hi ..., welcome back!</div>
-                <div id='trips-booked-text'>No trips booked...yet!</div>
+                <div>Hi {user.email}, welcome back!</div>
+                <div id='trips-booked-text'>Trying to find new trips?</div>
                 <div id='dust-off-msg-text'>Time to dust off your bags and start planning your next adventure</div>
                 <button onClick={handleStartSearchingClick} id='return-to-listings-index-button'>Start searching</button>
             </div>
