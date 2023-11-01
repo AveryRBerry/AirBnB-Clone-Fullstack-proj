@@ -7,6 +7,9 @@ import { getUser } from '../../store/users'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { createReservation } from '../../store/reservations'
+import LoginForm from '../LoginFormModal/LoginForm';
+import SignUpForm from '../SignUpFormModal/SignUpForm';
+import { Modal } from '../../context/Modal';
 
 
 
@@ -22,6 +25,8 @@ const ListingShow = () => {
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     const history = useHistory();
+    const [LoginshowModal, setLoginShowModal] = useState(false);
+    const [SignUpshowModal, setSignUpShowModal] = useState(false);
 
 
     useEffect(() => {
@@ -60,6 +65,16 @@ const ListingShow = () => {
             dispatch(createReservation(reservationData))
             history.push('/reservations')
         }
+    }
+
+    const handleLogIn = (e) => {
+        e.preventDefault();
+        setLoginShowModal(true)
+    }
+
+    const handleSignIn = (e) => {
+        e.preventDefault();
+        setSignUpShowModal(true)
     }
 
     if (!listing || !host ) return null
@@ -126,8 +141,8 @@ const ListingShow = () => {
                         }
                         {!user && 
                         <>
-                        <button onClick={handleReserveSubmit} id='bigRedBookingReserveFormButton2'>Log In</button>
-                        <button onClick={handleReserveSubmit} id='bigRedBookingReserveFormButton'>Sign Up</button>
+                        <button onClick={handleLogIn} id='bigRedBookingReserveFormButton2'>Log In</button>
+                        <button onClick={handleSignIn} id='bigRedBookingReserveFormButton'>Sign Up</button>
                         </>
                         }
                     </form>
@@ -146,6 +161,22 @@ const ListingShow = () => {
                 <div id='showPlaceholder'>Map</div>
                 <div is='showPlaceholder'>Host information</div> */}
             </div>
+            {LoginshowModal && (
+                <Modal id='logInModal' onClose={() => setLoginShowModal(false)}>
+                <button className='xFormButton' onClick={() => setLoginShowModal(false)} >
+                    <i className="fa-solid fa-times"></i>
+                </button>
+                <LoginForm />
+                </Modal> 
+            )}
+            {SignUpshowModal && (
+                <Modal id='signUpModal' onClose={() => setSignUpShowModal(false)}>
+                <button className='xFormButton' onClick={() => setSignUpShowModal(false)} >
+                    <i className="fa-solid fa-times"></i>
+                </button>
+                <SignUpForm />
+                </Modal> 
+            )}
         </>
     );
 }
