@@ -8,8 +8,7 @@
             :total_price,
             :start_date,
             :end_date
-
-
+            
     # Include the associated listing details
         json.listing do
             json.extract! reservation.listing, 
@@ -29,6 +28,25 @@
                 :longitude
             json.photos reservation.listing.photos do |photo|
                 json.photo_url url_for(photo)
+            end
+        end
+
+        
+        if reservation.review.present?
+            json.reviews do
+                json.extract! reservation.review, 
+                    :id,
+                    :listing_id,
+                    :reviewer_id,
+                    :reservation_id,
+                    :cleanliness,
+                    :accuracy,
+                    :value,
+                    :communication,
+                    :check_in,
+                    :location,
+                    :rating,
+                    :body
             end
         end
     end

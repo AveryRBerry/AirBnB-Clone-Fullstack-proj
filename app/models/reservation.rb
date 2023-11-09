@@ -2,6 +2,7 @@ class Reservation < ApplicationRecord
 
     belongs_to :listing
     belongs_to :guest, class_name: 'User'
+    has_one :review, class_name: 'Review'
     
     validates :num_guests, presence: true, numericality: { only_integer: true, greater_than: 0 }
     validates :total_price, presence: true, numericality: { greater_than: 0 }

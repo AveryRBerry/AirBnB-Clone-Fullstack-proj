@@ -9,6 +9,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const ReservationIndex = () => {
     const reservations = useSelector(getReservations);
+    console.log(reservations)
     const history =useHistory()
     const user = useSelector(state => state.session.user);
 

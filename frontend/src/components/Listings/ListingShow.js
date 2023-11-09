@@ -28,6 +28,7 @@ const ListingShow = () => {
     const [LoginshowModal, setLoginShowModal] = useState(false);
     const [SignUpshowModal, setSignUpShowModal] = useState(false);
 
+    console.log(listing)
 
     useEffect(() => {
         dispatch(fetchListing(listingId));

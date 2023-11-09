@@ -146,22 +146,22 @@ font-size: 20px;
 }
 
 .reservations-listing-buttons {
-        padding: 0;
-            margin-right: 10px;
-            margin-top: 5px;
-            font-size: 15px;
-            width: 35%;
-            height: 15%;
-            border-radius: 5px;
-            background-color: rgb(255, 0, 89);
-            color: white;
-            cursor: pointer;
-            border: none;
-            text-align: center;
-            vertical-align: middle;
-            line-height: 10px;
-            transition: transform 0.2s;
-            padding-bottom: 15px;
+    padding: 0;
+    margin-right: 10px;
+    margin-top: 5px;
+    font-size: 15px;
+    width: auto;
+    height: 15%;
+    border-radius: 5px;
+    background-color: rgb(255, 0, 89);
+    color: white;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 10px;
+    transition: transform 0.2s;
+    padding: 8px;
 }
 
 .reservations-listing-buttons:hover {

@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import React, { useState } from "react";
 import DatePicker from 'react-datepicker';
 import { updateReservation } from '../../store/reservations';
+import ReviewsForm from '../Reviews/ReviewsForm';
+import { deleteReview } from '../../store/reviews';
 
 function getReservationTime (reservation) {
     const currentDate= new Date()
@@ -32,7 +34,9 @@ const ReservationIndexItem = ({listing, reservation}) => {
     const [endDate, setEndDate] = useState(new Date(reservation.endDate));
     const [numGuests, setNumGuests] = useState(reservation.numGuests);
     const user = useSelector(state => state.session.user);
+    const [showReviewsForm, setShowReviewsForm] = useState(false);
 
+    // console.log(reservation.reviews)
 
     const handleDelete = (e) => {
         e.preventDefault()
@@ -89,7 +93,16 @@ const ReservationIndexItem = ({listing, reservation}) => {
     );
     }
 
-    // console.log(reservation.listing.photos[0])
+    const handleReviewForm = (e) => {
+        e.preventDefault();
+        setShowReviewsForm(!showReviewsForm);
+    }
+    // console.log(reservation.reviews?.id)
+    const handleDeleteReview = (e) => {
+        e.preventDefault();
+        dispatch(deleteReview(reservation.reviews.id))
+    }
+
 
     return (
         <>
@@ -157,7 +170,14 @@ const ReservationIndexItem = ({listing, reservation}) => {
                 <li>Guests: {reservation.numGuests}</li>
                 <li>${listing.price} night</li>
                 {typeOfReservation === 'current' && (
-                    <button className='reservations-listing-buttons'>To Listing</button>
+                    reservation.reviews ? (
+                        <>
+                        <button className='reservations-listing-buttons' onClick={handleReviewForm}>Update Review</button>
+                        <button className='reservations-listing-buttons'>Remove Review</button>
+                        </>
+                    ) : (
+                        <button className='reservations-listing-buttons' onClick={handleReviewForm}>Write Review</button>
+                    )
                 )}
 
                 {typeOfReservation === 'upcoming' && (
@@ -168,13 +188,25 @@ const ReservationIndexItem = ({listing, reservation}) => {
                 )}
 
                 {typeOfReservation === 'past' && (
-                    <>
-                        {/* <button className='reservations-listing-buttons'>Update Review</button>
-                        <button className='reservations-listing-buttons'>Remove Review</button> */}
-                    </>
+                    reservation.reviews ? (
+                        <>
+                        <button className='reservations-listing-buttons' onClick={handleReviewForm}>Update Review</button>
+                        <button className='reservations-listing-buttons' onClick={handleDeleteReview}>Remove Review</button>
+                        </>
+                    ) : (
+                        <button className='reservations-listing-buttons' onClick={handleReviewForm}>Write Review</button>
+                    )
                 )}
             </ul>
         </Link>
+
+        {showReviewsForm && (
+            <ReviewsForm
+            reservation={reservation}
+            onClose={() => setShowReviewsForm(false)}
+            />
+        )}
+
         </>
     )
 

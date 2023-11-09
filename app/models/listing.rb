@@ -16,5 +16,6 @@ class Listing < ApplicationRecord
 
     belongs_to :host, class_name: 'User', foreign_key: 'host_id'
     has_many_attached :photos
+    has_many :reviews, class_name: 'Review', foreign_key: 'listing_id'
 
 end

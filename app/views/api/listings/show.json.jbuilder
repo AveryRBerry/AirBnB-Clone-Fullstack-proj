@@ -15,11 +15,26 @@ json.listing do
         :has_washer_dryer,
         :latitude,
         :longitude
-    # json.photoUrls @listing.photos
-    # json.set! :image_url, @listing.image.url
     json.photos @listing.photos do |photo|
         json.photo_url url_for(photo)
     end
+
+    json.reviews @listing.reviews do |review|
+        json.extract! review, 
+            :id,
+            :listing_id,
+            :reviewer_id,
+            :reservation_id,
+            :cleanliness,
+            :accuracy,
+            :value,
+            :communication,
+            :check_in,
+            :location,
+            :rating,
+            :body
+    end
+
 end
 
 json.host do
@@ -29,3 +44,16 @@ json.host do
     :first_name,
     :last_name
 end
+
+# json.reviews @listing.reviews do |review|
+#     json.extract! review, 
+#         :id,
+#         :cleanliness,
+#         :accuracy,
+#         :value,
+#         :communication,
+#         :check_in,
+#         :location,
+#         :rating,
+#         :body
+# end

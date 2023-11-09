@@ -1,4 +1,4 @@
-import csrfFetch from './csrf';
+import { RECEIVE_REVIEW, REMOVE_REVIEW } from './reviews';
 
 export const RECEIVE_RESERVATIONS = 'reservations/RECEIVE_RESERVATIONS';
 export const RECEIVE_RESERVATION = 'reservations/RECEIVE_RESERVATION';
@@ -182,12 +182,52 @@ const reservationsReducer = (state = initialState, action) => {
             const deleteUpcomingReservations = state.upcomingReservations.filter((reservation) => {
                 return reservation.id !== action.reservationId;
             });
-            console.log(deleteUpcomingReservations)
+            // console.log(deleteUpcomingReservations)
             return {
                 currentReservations: state.currentReservations,
                 upcomingReservations: deleteUpcomingReservations,
                 pastReservations: state.pastReservations
             };
+
+        case RECEIVE_REVIEW: {
+            
+            const review = action.review
+
+            const newCurrentReservations = [...state.currentReservations];
+            const currentReservationForReviewIndex = newCurrentReservations.findIndex(res => res.id === review.reservationId);
+
+            if (currentReservationForReviewIndex >= 0) {
+                newCurrentReservations[currentReservationForReviewIndex].reviews = review;
+                return { ...state, currentReservations: newCurrentReservations };
+            }
+
+            const newPastReservations = [...state.pastReservations];
+            const pastReservationForReviewIndex = newPastReservations.findIndex(res => res.id === review.reservationId);
+            if (pastReservationForReviewIndex >= 0) {
+                newPastReservations[pastReservationForReviewIndex].reviews = review;
+                return { ...state, pastReservations: newPastReservations };
+            }
+            return state
+        }
+        case REMOVE_REVIEW: {
+            const { reservationId } = action
+
+            const newCurrentReservations = [...state.currentReservations];
+            const currentReservationForReviewIndex = newCurrentReservations.findIndex(res => res.id === reservationId);
+
+            if (currentReservationForReviewIndex >= 0) {
+                delete newCurrentReservations[currentReservationForReviewIndex].reviews;
+                return { ...state, currentReservations: newCurrentReservations };
+            }
+
+            const newPastReservations = [...state.pastReservations];
+            const pastReservationForReviewIndex = newPastReservations.findIndex(res => res.id === reservationId);
+            if (pastReservationForReviewIndex >= 0) {
+                delete newPastReservations[pastReservationForReviewIndex].reviews;
+                return { ...state, pastReservations: newPastReservations };
+            }
+            return state
+        }
 
         default:
             return state;
