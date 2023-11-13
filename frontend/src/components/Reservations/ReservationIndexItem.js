@@ -173,7 +173,7 @@ const ReservationIndexItem = ({listing, reservation}) => {
                     reservation.reviews ? (
                         <>
                         <button className='reservations-listing-buttons' onClick={handleReviewForm}>Update Review</button>
-                        <button className='reservations-listing-buttons'>Remove Review</button>
+                        <button className='reservations-listing-buttons' onClick={handleDeleteReview}>Remove Review</button>
                         </>
                     ) : (
                         <button className='reservations-listing-buttons' onClick={handleReviewForm}>Write Review</button>
