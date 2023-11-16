@@ -28,7 +28,6 @@ const ListingShow = () => {
     const [LoginshowModal, setLoginShowModal] = useState(false);
     const [SignUpshowModal, setSignUpShowModal] = useState(false);
 
-    console.log(listing)
 
     useEffect(() => {
         dispatch(fetchListing(listingId));
@@ -72,6 +71,7 @@ const ListingShow = () => {
             history.push('/reservations')
         }
     }
+
 
     const handleLogIn = (e) => {
         e.preventDefault();
@@ -162,10 +162,9 @@ const ListingShow = () => {
                         <li><i className="fas fa-tshirt"></i> {listing.hasWasherDryer ? 'Washer and Dryer : YES' : 'Washer and Dryer : NO'}</li>
                     </ul>
                 </div>
-                {/* <div id='showPlaceholder'>Calendar</div>
-                <div id='showPlaceholder'>Reviews</div>
-                <div id='showPlaceholder'>Map</div>
-                <div is='showPlaceholder'>Host information</div> */}
+                        {/* {listing.reviews && 
+                        <div>{listing.reviews}</div>
+                        } */}
             </div>
             {LoginshowModal && (
                 <Modal id='logInModal' onClose={() => setLoginShowModal(false)}>

@@ -36,7 +36,6 @@ const ReservationIndexItem = ({listing, reservation}) => {
     const user = useSelector(state => state.session.user);
     const [showReviewsForm, setShowReviewsForm] = useState(false);
 
-    // console.log(reservation.reviews)
 
     const handleDelete = (e) => {
         e.preventDefault()
@@ -97,7 +96,7 @@ const ReservationIndexItem = ({listing, reservation}) => {
         e.preventDefault();
         setShowReviewsForm(!showReviewsForm);
     }
-    // console.log(reservation.reviews?.id)
+    
     const handleDeleteReview = (e) => {
         e.preventDefault();
         dispatch(deleteReview(reservation.reviews.id))

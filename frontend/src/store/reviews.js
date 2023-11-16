@@ -19,7 +19,6 @@ export const removeReview = (reservationId) => {
 };
 
 export const createReview = review => async dispatch => {
-    console.log(review)
     const res = await fetch('/api/reviews', {
         method: 'POST',
         body: JSON.stringify(review),

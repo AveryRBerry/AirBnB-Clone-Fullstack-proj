@@ -9,7 +9,6 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const ReservationIndex = () => {
     const reservations = useSelector(getReservations);
-    console.log(reservations)
     const history =useHistory()
     const user = useSelector(state => state.session.user);
 
@@ -19,15 +18,11 @@ const ReservationIndex = () => {
         dispatch(fetchReservations());
     }, [dispatch]);
 
-    //     useEffect(() => {
-        
-    // }, [reservations.upcomingReservations]);
 
     const handleStartSearchingClick = () => {
         history.push("/")
     }
 
-    // console.log(user.email)
     
     return (
         <div id='reservations-content-container'>
@@ -63,7 +58,6 @@ const ReservationIndex = () => {
         <ul id='reservationsIndexPage'>
             {!reservations.upcomingReservations[0] && <div id='empty-check-text-reservations'><i className="far fa-frown"></i> It's empty here ... nothing to see</div>}
             {reservations.upcomingReservations.map(reservation => {
-                // console.log('*******',reservations,'*******')
                 return <ReservationIndexItem  listing={reservation.listing} reservation={reservation} />
             })}
         </ul>

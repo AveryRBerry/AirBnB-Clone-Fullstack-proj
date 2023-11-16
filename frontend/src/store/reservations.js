@@ -182,7 +182,6 @@ const reservationsReducer = (state = initialState, action) => {
             const deleteUpcomingReservations = state.upcomingReservations.filter((reservation) => {
                 return reservation.id !== action.reservationId;
             });
-            // console.log(deleteUpcomingReservations)
             return {
                 currentReservations: state.currentReservations,
                 upcomingReservations: deleteUpcomingReservations,

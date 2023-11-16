@@ -7,7 +7,6 @@ import StarRatings from 'react-star-ratings';
 import { useEffect } from 'react';
 
 const ReviewsForm = ({ reservation, onClose }) => {
-    // console.log(reservation)
 
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
@@ -41,7 +40,6 @@ const ReviewsForm = ({ reservation, onClose }) => {
         e.preventDefault();
 
         const reviewRatingAvg = Math.floor((rating.accuracy + rating.checkIn + rating.cleanliness + rating.communication + rating.location + rating.value)/6 * 10) / 10;
-        // console.log(reviewRatingAvg)
 
         let reviewData = {}
         if (reservation.reviews) {
@@ -62,13 +60,11 @@ const ReviewsForm = ({ reservation, onClose }) => {
             }
         }
 
-        // console.log(reviewData)
 
         if (reservation.reviews) {
         reviewData.reviewId = reservation.reviews.id;
         dispatch(updateReview(reviewData));
         } else {
-            // console.log(reviewData)
         dispatch(createReview(reviewData));
         }
         onClose();
