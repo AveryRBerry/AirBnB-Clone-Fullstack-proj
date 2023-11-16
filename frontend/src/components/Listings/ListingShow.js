@@ -83,9 +83,10 @@ const ListingShow = () => {
         setSignUpShowModal(true)
     }
 
-    console.log(listing.reviews)
+    
 
-    if (!listing || !host ) return null
+    if (!listing || !host || !listing.reviews ) return null
+    // console.log(listing.reviews)
 
     return (
         <>
@@ -168,8 +169,8 @@ const ListingShow = () => {
                 <div className="listing-review-container">
                     {listing.reviews.map((review, index) => (
                     <div key={index} className="single-review">
-                        <i className="fa fa-user-circle"></i>
-                        <div>{review.reviewerId}</div>
+                        <i className="fa fa-user-circle" style={{ color: 'red', fontSize: '30px' }}></i>
+                        <div style={{ fontWeight: 'bold' }}>{review.reviewer.firstName} {review.reviewer.lastName}</div>
                         <div>{review.rating}</div>
                         <div>{review.body}</div>
                     </div>

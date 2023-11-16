@@ -33,6 +33,10 @@ json.listing do
             :location,
             :rating,
             :body
+            json.reviewer do
+                json.first_name review.reviewer.first_name
+                json.last_name review.reviewer.last_name
+            end
     end
 
 end
