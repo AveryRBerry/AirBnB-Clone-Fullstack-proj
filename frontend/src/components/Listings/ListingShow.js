@@ -83,6 +83,8 @@ const ListingShow = () => {
         setSignUpShowModal(true)
     }
 
+    console.log(listing.reviews)
+
     if (!listing || !host ) return null
 
     return (
@@ -147,8 +149,8 @@ const ListingShow = () => {
                         }
                         {!user && 
                         <>
-                        <button onClick={handleLogIn} id='bigRedBookingReserveFormButton2'>Log In</button>
-                        <button onClick={handleSignIn} id='bigRedBookingReserveFormButton'>Sign Up</button>
+                            <button onClick={handleLogIn} id='bigRedBookingReserveFormButton2'>Log In</button>
+                            <button onClick={handleSignIn} id='bigRedBookingReserveFormButton'>Sign Up</button>
                         </>
                         }
                     </form>
@@ -162,24 +164,33 @@ const ListingShow = () => {
                         <li><i className="fas fa-tshirt"></i> {listing.hasWasherDryer ? 'Washer and Dryer : YES' : 'Washer and Dryer : NO'}</li>
                     </ul>
                 </div>
-                        {/* {listing.reviews && 
-                        <div>{listing.reviews}</div>
-                        } */}
+                {listing.reviews && (
+                <div className="listing-review-container">
+                    {listing.reviews.map((review, index) => (
+                    <div key={index} className="single-review">
+                        <i className="fa fa-user-circle"></i>
+                        <div>{review.reviewerId}</div>
+                        <div>{review.rating}</div>
+                        <div>{review.body}</div>
+                    </div>
+                    ))}
+                </div>
+                )}
             </div>
             {LoginshowModal && (
                 <Modal id='logInModal' onClose={() => setLoginShowModal(false)}>
-                <button className='xFormButton' onClick={() => setLoginShowModal(false)} >
-                    <i className="fa-solid fa-times"></i>
-                </button>
-                <LoginForm />
+                    <button className='xFormButton' onClick={() => setLoginShowModal(false)} >
+                        <i className="fa-solid fa-times"></i>
+                    </button>
+                    <LoginForm />
                 </Modal> 
             )}
             {SignUpshowModal && (
                 <Modal id='signUpModal' onClose={() => setSignUpShowModal(false)}>
-                <button className='xFormButton' onClick={() => setSignUpShowModal(false)} >
-                    <i className="fa-solid fa-times"></i>
-                </button>
-                <SignUpForm />
+                    <button className='xFormButton' onClick={() => setSignUpShowModal(false)} >
+                        <i className="fa-solid fa-times"></i>
+                    </button>
+                    <SignUpForm />
                 </Modal> 
             )}
         </>

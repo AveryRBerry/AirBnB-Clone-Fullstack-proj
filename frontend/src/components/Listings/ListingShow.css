@@ -263,4 +263,30 @@ font-size: 20px;
 }
 
 
+.listing-review-container {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(128, 128, 128, 0.5);
+    width: 100%;
+    /* text-align: center; */
+}
 
+.listing-review-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.single-review {
+    width: calc(48% - 10px);
+    border: 1px solid #eaeaea;
+    padding: 10px;
+}
+
+.single-review>div {
+    margin-bottom: 8px;
+}
+
+.single-review:nth-child(2n + 1) {
+    clear: both;
+}
