@@ -21,7 +21,7 @@ const Footer = () => {
 
     return (
         <div id={footer}>
-        <div>© 2023 Airdnd, Inc.TermsSitemapPrivacyYour Privacy Choices </div>
+        <div>Clone For Purposes of Education Only </div>
         <div className="social-media-list-footer">
         <ul className="social-media-list">
             <li>
@@ -40,7 +40,7 @@ const Footer = () => {
                 </a>
             </li>
         </ul>
-        English (US) Currency $USD</div>
+        Clone For Purposes of Education Only</div>
         </div>
     )
 }
